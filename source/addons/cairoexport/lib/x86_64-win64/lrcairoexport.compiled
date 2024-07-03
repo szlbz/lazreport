@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Lazarus Version="3.0"/>
+  <Compiler Value="D:\fpcupdeluxe3\fpc\bin\x86_64-win64\fpc.exe" Date="1480230624"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq -FuD:\fpcupdeluxe3\lazarus\packager\units\x86_64-win64 -FuD:\fpcupdeluxe3\lazarus\components\lazutils\lib\x86_64-win64 -FuD:\fpcupdeluxe3\lazarus\components\buildintf\units\x86_64-win64 -FuD:\fpcupdeluxe3\lazarus\components\freetype\lib\x86_64-win64 -FuD:\fpcupdeluxe3\lazarus\lcl\units\x86_64-win64 -FuD:\fpcupdeluxe3\lazarus\lcl\units\x86_64-win64\win32 -FuD:\fpcupdeluxe3\lazarus\components\cairocanvas\lib\x86_64-win64\win32 -FuD:\fpcupdeluxe3\lazarus\components\lazcontrols\lib\x86_64-win64\win32 -FuD:\fpcupdeluxe3\lazarus\components\synedit\units\x86_64-win64\win32 -FuD:\fpcupdeluxe3\lazarus\components\ideintf\units\x86_64-win64\win32 -FuD:\fpcupdeluxe3\lazarus\components\printers\lib\x86_64-win64\win32 -FuD:\fpcupdeluxe3\ccr\lazreport\source\lib\x86_64-win64 -FuD:\fpcupdeluxe3\ccr\lazreport_new\source\addons\cairoexport\ -FUD:\fpcupdeluxe3\ccr\lazreport_new\source\addons\cairoexport\lib\x86_64-win64\ -dLCL -dLCLwin32 lrcairoexport.pas"/>
+</CONFIG>
