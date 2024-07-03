@@ -1,0 +1,327 @@
+****************************************************
+The \source\ folder contains files for adding in Lazreport and CairoExport according to the instruction below
+****************************************************
+The \Lazreport\ folder contains the modified Lazreport package and cairoexport package with all changes
+Changes contain a mark of "added Yuriy Kopnin"
+****************************************************
+
+1. 
+
+files from folder \source-barcode2d\*.*:
+copy to ..\lazreport\source\
+
+2.
+
+Open package lazreport.lpk and add file lr_barcodes2d.pas
+
+3.
+
+Open unit lr_register.pas and add into uses lr_barcodes2d
+Add class TfrBarCode2d into procedure register 
+
+procedure Register;
+begin
+  RegisterComponents('LazReport', [TfrReport,TfrDBDataSet,
+     TfrBarCodeObject,TfrRoundRectObject,TfrShapeObject,
+     TfrCheckBoxObject,TfrCompositeReport,TfrUserDataset,
+     TfrTextExport,TfrHTMExport,TfrCSVExport,
+     TfrPrintGrid,TfrDesigner,TfrPreview,
+     TlrCrossObject,
+     //added Yuriy Kopnin
+     TfrBarCode2d, TfrPDF417
+     //end added
+     ]);
+  RegisterComponentEditor(TfrReport, TfrRepEditor);
+end;  
+
+**********************************
+Package Lazreport can be installed
+**********************************
+
+4. Open package ..\lazreport\source\addons\cairoexport\lrcairoexport.lpk
+
+5.
+open unit lr_e_cairo and add into uses lr_barcodes2d
+
+Into class TlrCairoExportFilter add public procedure:
+
+procedure ShowBarCode2d(View: TfrCustomBarCode2dView; x, y, h, w: integer);
+
+implementation:
+
+procedure TlrCairoExportFilter.ShowBarCode2d(View: TfrCustomBarCode2dView; x,
+  y, h, w: integer);
+var
+  R, R2: TRect;
+begin
+  R.Left := x;
+  R.Top := y;
+  R.Right:= x + w;
+  R.Bottom:= y + h;
+  R2 := R;
+  InflateRect(R2, 2, 2);
+  fCairoPrinter.Canvas.Brush.Color:= clWhite;
+  fCairoPrinter.Canvas.FillRect(R2);
+  if View.Memo.Text = '' then Exit;
+  View.UpdateBarcodeValue;
+  View.BarCode.PaintOnCanvas(fCairoPrinter.Canvas, R);
+end;
+
+procedure TlrCairoExportFilter.ShowPDF417(View: TfrCustomPDF417View; x, y, h,
+  w: integer);
+var
+  R, R2: TRect;
+  TmpBmp: TBitmap;
+begin
+  R.Left := x;
+  R.Top := y;
+  R.Right:= x + w;
+  R.Bottom:= y + h;
+  R2 := R;
+  InflateRect(R2, 2, 2);
+  fCairoPrinter.Canvas.Brush.Color:= clWhite;
+  fCairoPrinter.Canvas.FillRect(R2);
+  if View.Memo.Text = '' then Exit;
+  View.PaintOnCanvas(fCairoPrinter.Canvas, R);
+end;
+
+Change:
+procedure TlrCairoExportFilter.OnBeginPage;
+var
+  W: Integer;
+begin
+  inc(fPageNo);
+
+  if fPageNo>1 then
+    fCairoPrinter.NewPage;
+
+  with CurReport.EMFPages[FPageNo - 1]^ do begin
+    fCairoPrinter.PaperHeight := PrnInfo.PPgh;
+    fCairoPrinter.PaperWidth := PrnInfo.PPgw;
+    if PrnInfo.Pgh < PrnInfo.Pgw then
+    begin
+      if fCairoPrinter.PaperHeight > fCairoPrinter.PaperWidth then
+      begin
+        W := fCairoPrinter.PaperWidth;
+        fCairoPrinter.PaperWidth := fCairoPrinter.PaperHeight;
+        fCairoPrinter.PaperHeight := W;
+      end
+    end
+    else
+    if PrnInfo.Pgh > PrnInfo.Pgw then
+    begin
+      if fCairoPrinter.PaperHeight < fCairoPrinter.PaperWidth then
+      begin
+        W := fCairoPrinter.PaperWidth;
+        fCairoPrinter.PaperWidth := fCairoPrinter.PaperHeight;
+        fCairoPrinter.PaperHeight := W;
+      end
+    end;
+  end;
+
+  // TODO: non paged backends ...
+end; 
+
+6.
+Change: procedure DefaultShowView(View: TfrView; nx, ny, ndy, ndx: Integer);
+
+procedure TlrCairoExportFilter.DefaultShowView(View: TfrView; nx, ny, ndy,
+  ndx: Integer);
+begin
+  if (View.FillColor <> clNone)
+     and not (View is TfrCustomBarCodeView)
+     and not ((View is TfrPictureView) and
+              TfrPictureView(View).Stretched and not TfrPictureView(View).KeepAspect)
+  then
+    ShowBackGround(View, nx, ny, ndy, ndx);
+
+  if View is TfrCustomBarCodeView then
+      ShowBarCode(TfrCustomBarCodeView(View), nx, ny, ndy, ndx)
+  else if View is TfrPictureView then
+      ShowPicture(TfrPictureView(View), nx, ny, ndy, ndx)
+     
+      //Added Yuriy Kopnin
+  else if View is TfrCustomBarCode2dView then
+      ShowBarCode2d(TfrCustomBarCode2dView(View), nx, ny, ndy, ndx);
+  else if View is TfrCustomPDF417View then
+    ShowPDF417(TfrCustomPDF417View(View), nx, ny, ndy, ndx); 
+      //End added
+      
+
+  if (View.Frames<>[]) and not (View is TfrCustomBarCodeView) then
+     ShowFrame(View, nx, ny, ndy, ndx);
+end;
+
+7.
+unit lr_e_cairo add TfrCheckBoxView draw
+
+procedure TlrCairoExportFilter.OnText(X, Y: Integer; const Text: string;
+  View: TfrView);
+var
+  nx, ny, gapx, gapy, sgapx, sgapy: Integer;
+  aStyle, oldStyle: TTextStyle;
+  R: TRect;
+
+  procedure aLine(x, y, x1, y1: Integer);
+  begin
+    fCairoPrinter.Canvas.MoveTo(x, y);
+    fCairoPrinter.Canvas.LineTo(x1, y1);
+  end;
+
+begin
+
+  // The text drawn in this function is enclosed in a view frame
+  // given by DataRect (cached from OnData event)
+  //
+  // this function is called repeteadly for each line of text contained in view
+  // For horizontal text, the y parameter has the y-position of current line
+  //                      and x parameter is constant
+  // For vertical text, the x parameter has the x-position of the curent line
+  //                    and y parameter is constant
+  //
+  // however this function is resposible for calculating the x-position (for
+  // horizontal text) or the y-position (for vertical text) corresponding to
+  // the specified alignment.
+
+  // This means LazReport is a mess. It gives exporter the task to calc the proper
+  // text widths for "alignment" purposes but it internally calc the height of text
+  // and so it assumes it properly calc the "layout" of text........
+
+  // setup clipping
+  //OldClipping := fCairoPrinter.Canvas.Clipping;
+  //if OldClipping then
+  //  OldClipRect := fCairoPrinter.Canvas.ClipRect;
+  //fCairoPrinter.Canvas.ClipRect := DataRect;
+  //fCairoPrinter.Canvas.Clipping := true;
+
+  oldStyle := fCairoPrinter.Canvas.TextStyle;
+  aStyle := oldStyle;
+  aStyle.Clipping:=false;  // NOTE: there are some interaction between this and roundrect
+  aStyle.Layout:=tlTop;    //       background painting, set to false for the moment
+  if View is TfrCheckBoxView then
+  begin
+    gapx := trunc(View.FrameWidth / 2 + 0.5);
+    gapy := trunc(View.FrameWidth / 4 + 0.5);
+    sgapx := trunc( gapx * ScaleX + 0.5);
+    sgapy := trunc( gapy * ScaleY + 0.5);
+    nx := trunc((x+gapx) * ScaleX + 0.5);
+    ny := trunc((y+gapy) * ScaleY + 0.5);
+    R := DataRect;
+    InflateRect(R, -sgapx, -sgapy);
+
+    InflateRect(R, Round(-4 * ScaleX), Round(-4 * ScaleY));
+    with fCairoPrinter.Canvas, R do
+    begin
+      Pen.Mode := pmCopy;
+      Pen.Style := psSolid;
+      Pen.Color := clBlack;
+      if TfrCheckBoxView(View).Checked then
+      begin
+        Pen.Color := clBlack;
+        Pen.Width := Round(3 * ScaleX);
+        aLine(Left, Top, Right, Bottom);
+        aLine(Left, Bottom, Right, Top);
+      end;
+    end;
+  end else
+  begin
+    aStyle.Alignment:=taLeftJustify;
+    aStyle.WordBreak:=false;
+    gapx := trunc(View.FrameWidth / 2 + 0.5);
+    gapy := trunc(View.FrameWidth / 4 + 0.5);
+    sgapx := trunc( gapx * ScaleX + 0.5);
+    sgapy := trunc( gapy * ScaleY + 0.5);
+    nx := trunc((x+gapx) * ScaleX + 0.5);
+    ny := trunc((y+gapy) * ScaleY + 0.5);
+    R := DataRect;
+    InflateRect(R, -sgapx, -sgapy);
+
+    if View is TfrMemoView then
+    begin
+      aStyle.Alignment:=TfrMemoView_(View).Alignment;
+      aStyle.Wordbreak:= TfrMemoView_(View).WordWrap;
+      fCairoPrinter.Canvas.Font := TfrMemoView_(View).Font;
+      fCairoPrinter.Canvas.Font.Orientation := (View as TfrMemoView).Angle * 10;
+
+      if fCairoPrinter.Canvas.Font.Orientation<>0 then
+        fCairoPrinter.Canvas.TextRect(R, nx, R.Bottom, Text, aStyle)
+      else
+      begin
+        if TfrMemoView_(View).Justify and not TfrMemoView_(View).LastLine then
+          CanvasTextRectJustify(fCairoPrinter.Canvas, R, nx, R.Right, ny, Text, true)
+        else
+          fCairoPrinter.Canvas.TextRect(R, {R.Left} nx, ny, Text, aStyle);
+      end;
+    end else
+      fCairoPrinter.Canvas.TextRect(R, {R.Left} nx, ny, Text, aStyle);
+  end;
+
+
+
+  // restore previous clipping
+  //if OldClipping then
+  //  fCairoPrinter.Canvas.ClipRect := OldClipRect
+  //else
+  //  fCairoPrinter.Canvas.Clipping := false;
+  fCairoPrinter.Canvas.TextStyle := oldStyle;
+end;
+
+8. unit lr_view
+
+procedure TfrPreviewForm.SaveBtnClick(Sender: TObject);
+var
+  i, Index, N: Integer;
+  FilterStr: string;
+  FilterInfo: TExportFilterItem;
+  FExtList:TStringList;
+begin
+  if EMFPages = nil then Exit;
+  FExtList:=TStringList.Create;
+  try
+    Index := 1;
+    if not (roHideDefaultFilter in TfrReport(Doc).Options) then
+    begin
+      FExtList.Add('*.frp');
+      FilterStr := sRepFile + ' (*.frp)|*.frp';
+    end else
+      FilterStr := '';
+
+    for i := 0 to ExportFilters.Count - 1 do
+    begin
+      FilterInfo := ExportFilters[i];
+      if FilterInfo.Enabled then
+      begin
+
+        N := FExtList.AddObject(FilterInfo.FilterExt, TObject(PtrInt(i+1)));
+        if FilterStr <> '' then
+          FilterStr := FilterStr + '|';
+        FilterStr := FilterStr + FilterInfo.FilterDesc + '|' + FilterInfo.FilterExt;
+        //Yuriy Kopnin
+        if Pos('pdf', FilterInfo.FilterExt) > 0 then Index := N + 1;
+        //End Yuriy Kopnin
+      end;
+    end;
+
+    SaveDialog.Filter := FilterStr;
+    SaveDialog.FilterIndex := Index;
+    if SaveDialog.Execute then
+    begin
+      Index := SaveDialog.FilterIndex - 1;
+      if fExtList.Objects[Index]=nil then
+        SaveToFile(SaveDialog.Filename) // using .frp
+      else
+      begin
+        Index := PtrInt(fExtList.Objects[Index])-1;
+        ExportToWithFilterIndex(Index, SaveDialog.FileName);
+      end;
+    end;
+
+  finally
+    FExtList.Free;
+    ScrollBox1.Invalidate;
+  end;
+end; 
+
+**********************************
+Package lrcairoexport can be installed
+**********************************

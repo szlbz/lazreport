@@ -1,0 +1,74 @@
+LD_desgn.pas
+1.修正编辑文本后退出lazarus出错
+注释第3684和4240行
+3684:  //EditorForm := TfrEditorForm.Create(nil);//2022.12.10 LBZ修正编辑文本后退出lazarus出错
+4240:  //EditorForm.Free; //2022.12.10 LBZ修正编辑文本后退出lazarus出错
+6095行添加:
+6095:  EditorForm := TfrEditorForm.Create(nil);//2022.12.10 LBZ修正编辑文本后退出lazarus出错
+6102:  EditorForm.free; //2022.12.10 LBZ修正编辑文本后退出lazarus出错
+
+procedure TfrDesignerForm.ShowMemoEditor;
+begin
+  EditorForm := TfrEditorForm.Create(nil);//2022.12.10 LBZ修正编辑文本后退出lazarus出错(第6095行)
+
+  if EditorForm.ShowEditor(TfrView(Objects[TopSelected])) = mrOk then
+  begin
+    PageView.NPDrawSelection;
+    PageView.NPDrawLayerObjects(EditorForm.View.GetClipRgn(rtExtended), TopSelected);
+  end;
+  EditorForm.free; //2022.12.10 LBZ修正编辑文本后退出lazarus出错(第6102行)
+  ActiveControl := nil;
+end;
+
+2.取消<提示"您已经有一个TfrDesigner组件">限制
+注释第1274/1275行
+constructor TfrDesigner.Create(AOwner: TComponent);
+begin
+  //if Assigned(frDesignerComp) then //2022.11.18 LBZ 删除以下2行代号(提示"您已经有一个TfrDesigner组件")<第1274行>
+    //raise Exception.Create(sFRDesignerExists);//<第1275行>
+  inherited Create(AOwner);
+  frDesignerComp:=Self;
+end;
+=========================================================
+
+LR_View.pas
+第250行：
+destructor TfrPreview.Destroy;
+begin
+  //2022.05.13 增加以下2行，修正使用frpreview后退出时出错的Bug LBZ
+  if FWindow.EMFPages <> nil then
+    FWindow.ConnectBack;
+  //2022.05.13 增加以上2行，修正使用frpreview后退出时出错的Bug LBZ
+  FWindow.Free;
+  inherited Destroy;
+end;
+
+
+=========================================================
+LR_Class.pas
+由于增加水印,代码处理有问题,引起FPages页面超范围的Bug,只需将第12008和12010行:
+将(EMFPages.Parent.FPages[n].FWaterMarkText改为(EMFPages.Parent.FPages[0].FWaterMarkText
+只取模板第一页的的FWaterMarkText值.
+
+        //LBZ 2022.6.14  指定位置打印特定字符，一般用于版本等信息
+        _WaterMarkText:=WaterMark.Text;
+        if (trim(WaterMark.Text)='') and (trim(EMFPages.Parent.FPages[0].FWaterMarkText)<>'') then   //2022.11.23 修正打印时可能出现的Bug
+        begin
+           _WaterMarkText:=EMFPages.Parent.FPages[0].FWaterMarkText;//2022.11.23 LBZ 修正打印时可能出现的Bug
+           WaterMark.Angle:=-45;
+        end;
+        if trim(_WaterMarkText) <> '' then //LBZ 2022.6.14  水印，指定位置打印特定字符，一般用于版本等信息
+        begin
+
+=========================================================
+LR_Desgn.pas
+lazreport不能出现一个以上的designer控件,按以下方法处理后就可以.
+第1272行:
+constructor TfrDesigner.Create(AOwner: TComponent);
+begin
+  //2022.11.18 LBZ 删除以下2行代号(提示"您已经有一个TfrDesigner组件")
+  //if Assigned(frDesignerComp) then
+    //raise Exception.Create(sFRDesignerExists);
+  inherited Create(AOwner);
+  frDesignerComp:=Self;
+end;
