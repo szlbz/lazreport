@@ -1,0 +1,73 @@
+object AUTOTABLEFORM: TAUTOTABLEFORM
+  Left = 560
+  Height = 165
+  Top = 41
+  Width = 278
+  BorderStyle = bsDialog
+  Caption = '单元格拆分'
+  ClientHeight = 165
+  ClientWidth = 278
+  DesignTimePPI = 168
+  Position = poScreenCenter
+  LCLVersion = '2.2.0.4'
+  object Label1: TLabel
+    Left = 24
+    Height = 28
+    Top = 12
+    Width = 42
+    Caption = '行数'
+  end
+  object Label2: TLabel
+    Left = 24
+    Height = 28
+    Top = 61
+    Width = 42
+    Caption = '列数'
+  end
+  object Edit1: TEdit
+    Left = 80
+    Height = 36
+    Top = 12
+    Width = 121
+    OnKeyPress = Edit1KeyPress
+    TabOrder = 0
+    Text = '1'
+  end
+  object Edit2: TEdit
+    Left = 80
+    Height = 36
+    Top = 61
+    Width = 121
+    TabOrder = 1
+    Text = '1'
+  end
+  object Button1: TButton
+    Left = 80
+    Height = 33
+    Top = 112
+    Width = 148
+    Caption = '确定'
+    ModalResult = 1
+    TabOrder = 2
+  end
+  object UpDown1: TUpDown
+    Left = 201
+    Height = 36
+    Top = 12
+    Width = 27
+    Associate = Edit1
+    Min = 1
+    Position = 1
+    TabOrder = 3
+  end
+  object UpDown2: TUpDown
+    Left = 201
+    Height = 36
+    Top = 61
+    Width = 27
+    Associate = Edit2
+    Min = 1
+    Position = 1
+    TabOrder = 4
+  end
+end
