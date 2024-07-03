@@ -1,0 +1,63 @@
+object PDF417Form: TPDF417Form
+  Left = 282
+  Height = 325
+  Top = 135
+  Width = 463
+  BorderStyle = bsDialog
+  Caption = 'PDF417'
+  ClientHeight = 325
+  ClientWidth = 463
+  LCLVersion = '1.6.4.0'
+  object Memo1: TMemo
+    Left = 16
+    Height = 218
+    Top = 16
+    Width = 432
+    TabOrder = 0
+  end
+  object Button3: TButton
+    Left = 16
+    Height = 29
+    Top = 280
+    Width = 131
+    Caption = 'DB Data'
+    OnClick = Button3Click
+    TabOrder = 1
+  end
+  object Button1: TButton
+    Left = 248
+    Height = 29
+    Top = 280
+    Width = 97
+    Caption = 'OK'
+    ModalResult = 1
+    TabOrder = 2
+  end
+  object Button2: TButton
+    Left = 351
+    Height = 29
+    Top = 280
+    Width = 97
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 3
+  end
+  object Image1: TImage
+    Left = 192
+    Height = 16
+    Top = 272
+    Width = 16
+    AutoSize = True
+    Picture.Data = {
+      1754506F727461626C654E6574776F726B47726170686963D600000089504E47
+      0D0A1A0A0000000D494844520000001000000010080200000090916836000000
+      097048597300000B1300000B1301009A9C180000000774494D4507E10A120B0F
+      2AF11ADFCA000000754944415428CF95924B0E002108435B32F7F2EA7A3266D1
+      4489E3876141D4507C55586BC59F7800945232A5AD3500A60DC998B598CEC562
+      CB66EEDE3553AC0524DDFD2E506395EA86AFCCBE30672ADBF1F47C124C8F9335
+      2DAAACE988741744A4F86229A494E9EBAF0D4134BACB635A3586C9397F014790
+      5427A20E487B0000000049454E44AE426082
+    }
+    Visible = False
+  end
+end

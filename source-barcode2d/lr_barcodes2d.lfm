@@ -1,0 +1,75 @@
+object BarCode2dForm: TBarCode2dForm
+  Left = 290
+  Height = 374
+  Top = 159
+  Width = 463
+  BorderStyle = bsDialog
+  Caption = 'BarCode editor'
+  ClientHeight = 374
+  ClientWidth = 463
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '1.6.0.4'
+  object Image1: TImage
+    Left = 352
+    Height = 16
+    Top = 8
+    Width = 16
+    AutoSize = True
+    Picture.Data = {
+      1754506F727461626C654E6574776F726B47726170686963E700000089504E47
+      0D0A1A0A0000000D494844520000001000000010080200000090916836000000
+      097048597300000B1300000B1301009A9C180000000774494D4507E0061E0B33
+      2FB6F9D3A6000000864944415428CF9552410EC0200803E3BFFCBABE8C1D8815
+      2B5B1CA78AAD05447BEFF227AA88B4D66EA8630C11297ED019C067DE6B2978C0
+      CC9CE1181ACF23960054E241B9096C86AA9215996C3DC4C26255B94354C62329
+      0B5D10F5EC7B39C4B180ED3871A0C942EF386F9A26784E6CAD06559582D78FFB
+      6877738817F459A4A958C3CB3D7F003052842EB74011BD0000000049454E44AE
+      426082
+    }
+    Visible = False
+  end
+  object cbType: TComboBox
+    Left = 16
+    Height = 27
+    Top = 24
+    Width = 432
+    ItemHeight = 0
+    Style = csDropDownList
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 248
+    Height = 29
+    Top = 328
+    Width = 97
+    Caption = 'OK'
+    ModalResult = 1
+    TabOrder = 1
+  end
+  object Button2: TButton
+    Left = 351
+    Height = 29
+    Top = 328
+    Width = 97
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 2
+  end
+  object Memo1: TMemo
+    Left = 16
+    Height = 218
+    Top = 64
+    Width = 432
+    TabOrder = 3
+  end
+  object Button3: TButton
+    Left = 16
+    Height = 29
+    Top = 328
+    Width = 131
+    Caption = 'DB Data'
+    OnClick = Button3Click
+    TabOrder = 4
+  end
+end
