@@ -4303,8 +4303,6 @@ var
     PPI:Integer;
     curyf, thf, linespc: Extended;
     FTmpFL:boolean;
-    ss:TStringList;
-    tmp:Extended;
 
     function OutLine(st: String): Boolean;
     var
