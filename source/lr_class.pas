@@ -4117,7 +4117,7 @@ var
     {$ENDIF}
     for i := 0 to Memo1.Count - 1 do
     begin
-      maxWidth := dx - InternalGapX - InternalGapX - FParagraphGap;
+      maxWidth := dx - InternalGapX - InternalGapX;// - FParagraphGap;//2024.07.04 LBZ
       //if (Flags and flWordWrap) <> 0 then
       //  WrapLine(Memo1[i])
       //else
@@ -4190,14 +4190,7 @@ procedure TfrCustomMemoView.ShowMemo;
 var
   DR         : TRect;
   SavX,SavY  : Integer;
-
-  procedure StrOut(const str: string; CurX, CurY,PGap: Integer; bVertText: Boolean);
-  begin
-    //if Isprinting then
-    //  CanvasTextRectJustify(Canvas, DR, CurX+round(PGap*1.08), dx, CurY, Str, true)
-    //else
-      CanvasTextRectJustify(Canvas, DR, CurX+PGap, dx, CurY, Str, true);
-  end;
+  FCharacterSpacing:integer;
 
   procedure showchar(x, y, c, PGap: Integer; st: string);
   var
@@ -4205,6 +4198,7 @@ var
     str,ss: string;
     fonts: Integer;
     fontsizes:integer;
+    AStyle: TTextStyle;
   begin
     j := 0;
     i := 1;
@@ -4272,9 +4266,33 @@ var
       str := UTF8Copy(st, i, 1);
       Inc(i);
       Inc(j);
-      StrOut(str, x, y,PGap, True);
-      // ExtTextOut(Canvas.Handle, x, y, ETO_CLIPPED, @DR, PChar(str), Length(str), nil);
+      AStyle := Canvas.TextStyle;
+      AStyle.Wordbreak := False;
+      //2024.07.11 LBZ
+      {$ifdef linux}
+      if IsPrinting then
+      begin
+        if Canvas.TextWidth(str)+x<x+dr.Right then
+          Canvas.TextRect(DR, round(x + PGap), y, Str,AStyle);
+        if Alignment= Classes.taCenter then
+          x := x + c + c1 + Canvas.TextWidth(str)//+round(CharacterSpacing* ScaleX)
+        else
+        begin
+          if x + c + c1 + Canvas.TextWidth(str)+FCharacterSpacing<x+dr.Right then
+            x := x + c + c1 + Canvas.TextWidth(str)+FCharacterSpacing//修正打印时的宽度
+          else
+            x := x + c + c1 + Canvas.TextWidth(str);//修正打印时的宽度
+        end;
+      end
+      else
+      begin
+        Canvas.TextRect(DR, round(x + PGap), y, Str,AStyle);
+        x := x + c + c1 + Canvas.TextWidth(str);
+      end;
+      {$else}
+      Canvas.TextRect(DR, round(x + PGap), y, Str,AStyle);
       x := x + c + c1 + Canvas.TextWidth(str);
+      {$endif}
    end;
    Canvas.Font.Size:=fontsizes;
   end;
@@ -4285,6 +4303,8 @@ var
     PPI:Integer;
     curyf, thf, linespc: Extended;
     FTmpFL:boolean;
+    ss:TStringList;
+    tmp:Extended;
 
     function OutLine(st: String): Boolean;
     var
@@ -4369,7 +4389,11 @@ var
         case Alignment of
           Classes.taLeftJustify : CurX :=x+InternalGapX;
           Classes.taRightJustify: CurX :=x+dx-1-InternalGapX-self.Canvas.TextWidth(St);
-          Classes.taCenter      : CurX :=x+InternalGapX+(dx-InternalGapX-InternalGapX-Canvas.TextWidth(St)) div 2;
+          Classes.taCenter      :
+          begin
+            CurX :=x+InternalGapX+(dx-InternalGapX-InternalGapX-Canvas.TextWidth(St)) div 2;
+            FCharacterSpacing:=0;
+          end;
         end;
 
         if Justify and not LastLine then
@@ -4450,18 +4474,26 @@ var
     else
       h := Self.Font.Size;
 
-    {$ifdef windows}
     thf := h*(96 / 72) * ScaleY;
+
+    FCharacterSpacing:=0;
+    {$ifdef windows}
+    if isprinting then
+      PPI := GetDeviceCaps(self.Canvas.Handle , LOGPIXELSY)
+    else ppi:=96;
+      thf := h*(96 / 72) * ScaleY;
     {$else}
     if IsPrinting then
     begin
+      FCharacterSpacing:=Round(ScaleX*0.8); //修正linux字体间隙
       //SetTextCharacterExtra(Canvas.Handle, Round(CharacterSpacing * ScaleX));
       PPI := (Canvas as TPrinterCanvas).XDPI;//GetDeviceCaps(self.Canvas.Handle , LOGPIXELSY);
-      thf := h*( PPI / 72)
+      thf := h * ( PPI / 72);
     end
     else
-      thf := h*(96 / 72) * ScaleY;
+      thf := h * (96 / 72) * ScaleY;
     {$endif}
+
 
     // Corrects font height, that's the total line height minus the scaled linespacing
     Canvas.Font.Height := -Round(thf);
@@ -4472,6 +4504,21 @@ var
     CurStrNo := 0;
 
     FirstLine:=true;
+
+    //{$ifdef linux}
+    //if IsPrinting then//linux可能存在字符串宽度比单元各的宽度的问题，如果超过则缩小字体
+    //begin
+    //  for i := 0 to Memo1.Count - 1 do
+    //  begin
+    //    if Canvas.TextWidth(Memo1[i])>DRect.Right-DRect.Left then
+    //    begin
+    //      Canvas.Font.Size:=Canvas.Font.Size-1;
+    //      //Canvas.Font.Height := Canvas.Font.Height+1;
+    //      break;
+    //    end;
+    //  end;
+    //end;
+    //{$endif}
     for i := 0 to Memo1.Count - 1 do
       if OutLine(Memo1[i])  then
         break;
@@ -4720,7 +4767,8 @@ begin
   //SetTextCharacterExtra(Canvas.Handle, Round(CharacterSpacing * ScaleX));
   DrawText(Canvas.Handle, PChar(s), Length(s), CalcRect, DTFlags);
   {$ENDIF}
-  Result := CalcRect.Right + Round(2 * FrameWidth) + 2;
+  Result := CalcRect.Right;// + Round(2 * FrameWidth) + 2;  //LBZ 2024-7-4
+  //Result := CalcRect.Right + Round(2 * FrameWidth) + 2;
   {$IFDEF DebugLR}
   DebugLnExit('TfrMemoView.CalcWidth DONE Width=%d Rect=%s',[Result,dbgs(CalcRect)]);
   {$ENDIF}
