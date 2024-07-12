@@ -4065,7 +4065,6 @@ begin
     if CurReport.Pages[i] is TfrPageDialog then
       TfrPageDialog(CurReport.Pages[i]).Form.Name:='';
 end;
-                                      //EditorForm.Free; //2022.12.10 LBZ修正编辑文本后退出lazarus出错
 
 procedure DoResoreFormsName;
 var
@@ -7283,7 +7282,7 @@ begin
         RedrawPage;
       end
       else
-        ShowMessage('多行各列单元格需对齐后才能垂直匀分。');
+        ShowMessage(sFRDesignerFormVerticaluniformdistribution);//'多行各列单元格需对齐后才能垂直匀分。');
     finally
       gr := nil;
     end;
@@ -7519,7 +7518,7 @@ begin
         RedrawPage;
       end
       else
-        ShowMessage('多行各列单元格需对齐后才能水平匀分。');
+        ShowMessage(sFRDesignerFormHorizontaluniformdistribution);//'多行各列单元格需对齐后才能水平匀分。');
     finally
       gr := nil;
     end;
@@ -9973,7 +9972,7 @@ initialization
   begin
     Width := 8; Height := 8;
   end;
-  LastFrames:=[];
+  LastFrames:=[frbLeft, frbTop, frbRight, frbBottom];//2024-07-12 LBZ 改为默认全部有边框
   LastFrameWidth := 1;
   LastLineWidth := 2;
   LastFillColor := clNone;

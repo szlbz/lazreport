@@ -1,11 +1,11 @@
 unit FR_AUTOTABLE;
 
-{$mode Delphi}
-
 interface
+{$I LR_Vers.inc}
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
+  {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 type
 
@@ -19,7 +19,7 @@ type
     Label2: TLabel;
     UpDown1: TUpDown;
     UpDown2: TUpDown;
-    procedure Edit1KeyPress(Sender: TObject; var Key: char);
+    procedure FormCreate(Sender: TObject);
   private
 
   public
@@ -35,13 +35,12 @@ implementation
 
 { TAUTOTABLEFORM }
 
-procedure TAUTOTABLEFORM.Edit1KeyPress(Sender: TObject; var Key: char);
+procedure TAUTOTABLEFORM.FormCreate(Sender: TObject);
 begin
-  if key=#13 then
-  begin
-    key:=#0;
-    close;
-  end;
+  caption:=sFRDesignerFormCellsplitting;
+  Label1.Caption:=sFRDesignerFormNumberofrows;
+  Label2.Caption:=sFRDesignerFormNumberofcols;
+  Button1.Caption:=sOk;
 end;
 
 end.

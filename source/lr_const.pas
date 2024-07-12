@@ -520,6 +520,11 @@ resourcestring
   sFRDesignerFormFrameColor = 'Frame color';
   sFRDesignerFormFrameWidth = 'Frame width';
   sFRDesignerFormSelectSameClass = 'Select same class objects';
+  sFRDesignerFormCellsplitting='Cell splitting';
+  sFRDesignerFormNumberofrows='Number of rows';
+  sFRDesignerFormNumberofcols='Number of cols';
+  sFRDesignerFormVerticaluniformdistribution = 'Multiple rows and columns of cells need to be aligned before they can be evenly divided vertically.';
+  sFRDesignerFormHorizontaluniformdistribution = 'Multiple rows and columns of cells need to be aligned before they can be evenly divided horizontally.';
   //  53131 = 'Frame width';
   sFRDesignerFormSelObj = 'Select object';
   sFRDesignerFormInsRect = 'Insert rectangle object';

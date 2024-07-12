@@ -1,70 +1,73 @@
 object AUTOTABLEFORM: TAUTOTABLEFORM
   Left = 560
-  Height = 165
+  Height = 172
   Top = 41
-  Width = 278
+  Width = 348
   BorderStyle = bsDialog
   Caption = '单元格拆分'
-  ClientHeight = 165
-  ClientWidth = 278
-  DesignTimePPI = 168
+  ClientHeight = 172
+  ClientWidth = 348
+  DesignTimePPI = 144
+  OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '2.2.0.4'
   object Label1: TLabel
-    Left = 24
-    Height = 28
-    Top = 12
-    Width = 42
+    AnchorSideRight.Control = Edit1
+    Left = 120
+    Height = 24
+    Top = 23
+    Width = 36
+    Anchors = [akTop, akRight]
     Caption = '行数'
   end
   object Label2: TLabel
-    Left = 24
-    Height = 28
+    AnchorSideRight.Control = Edit2
+    Left = 120
+    Height = 24
     Top = 61
-    Width = 42
+    Width = 36
+    Anchors = [akTop, akRight]
     Caption = '列数'
   end
   object Edit1: TEdit
-    Left = 80
-    Height = 36
-    Top = 12
-    Width = 121
-    OnKeyPress = Edit1KeyPress
+    Left = 156
+    Height = 32
+    Top = 19
+    Width = 69
     TabOrder = 0
     Text = '1'
   end
   object Edit2: TEdit
-    Left = 80
-    Height = 36
+    Left = 156
+    Height = 32
     Top = 61
-    Width = 121
+    Width = 69
     TabOrder = 1
     Text = '1'
   end
   object Button1: TButton
-    Left = 80
-    Height = 33
-    Top = 112
-    Width = 148
+    Left = 122
+    Height = 39
+    Top = 102
+    Width = 127
     Caption = '确定'
     ModalResult = 1
     TabOrder = 2
   end
   object UpDown1: TUpDown
-    Left = 201
-    Height = 36
-    Top = 12
-    Width = 27
+    Left = 225
+    Height = 32
+    Top = 19
+    Width = 23
     Associate = Edit1
     Min = 1
     Position = 1
     TabOrder = 3
   end
   object UpDown2: TUpDown
-    Left = 201
-    Height = 36
+    Left = 225
+    Height = 32
     Top = 61
-    Width = 27
+    Width = 23
     Associate = Edit2
     Min = 1
     Position = 1
