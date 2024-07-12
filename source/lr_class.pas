@@ -29,7 +29,7 @@ uses
   // IDEIntf
   PropEdits,
   // LazReport
-  LR_View, LR_Pars, LR_Intrp, LR_DSet, LR_DBSet, LR_DBRel, LR_Const, DbCtrls
+  LR_View, LR_Pars, LR_Intrp, LR_DSet, LR_DBSet, LR_DBRel, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, DbCtrls
   {$IFDEF LCLNOGUI}
   ,lr_ngcanvas
   {$ENDIF}

@@ -64,7 +64,7 @@ type
 
 implementation
 
-uses LR_Utils, LR_Const;
+uses LR_Utils, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 {$IFNDEF LCLNOGUI}
 

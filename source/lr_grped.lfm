@@ -1,31 +1,32 @@
 object frGroupEditorForm: TfrGroupEditorForm
   Left = 289
-  Height = 119
+  Height = 178
   Top = 281
-  Width = 505
+  Width = 758
   HorzScrollBar.Page = 492
   VertScrollBar.Page = 117
   ActiveControl = Edit1
   BorderIcons = [biSystemMenu, biHelp]
   Caption = 'Group'
-  ClientHeight = 119
-  ClientWidth = 505
+  ClientHeight = 178
+  ClientWidth = 758
+  DesignTimePPI = 144
   OnCreate = FormCreate
   Position = poScreenCenter
   ShowHint = True
-  LCLVersion = '0.9.29'
+  LCLVersion = '3.0.0.3'
   object GB1: TGroupBox
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = ButtonPanel1
-    Left = 6
+    Left = 9
     Height = 63
-    Top = 6
+    Top = 9
     Width = 493
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Condition'
     ClientHeight = 47
     ClientWidth = 491
@@ -34,16 +35,15 @@ object frGroupEditorForm: TfrGroupEditorForm
       AnchorSideLeft.Control = GB1
       AnchorSideTop.Control = GB1
       AnchorSideRight.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 21
-      Top = 6
-      Width = 449
+      Top = 9
+      Width = 428
       Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Left = 6
-      BorderSpacing.Top = 6
-      BorderSpacing.Bottom = 6
-      ButtonWidth = 23
-      CharCase = ecNormal
+      BorderSpacing.Left = 9
+      BorderSpacing.Top = 9
+      BorderSpacing.Bottom = 9
+      ButtonWidth = 34
       Glyph.Data = {
         96000000424D960000000000000076000000280000000A000000040000000100
         04000000000020000000CE0E0000C40E00001000000000000000000000000000
@@ -54,6 +54,7 @@ object frGroupEditorForm: TfrGroupEditorForm
       MaxLength = 0
       NumGlyphs = 1
       OnButtonClick = frSpeedButton1Click
+      PasswordChar = #0
       TabOrder = 0
     end
   end
@@ -62,11 +63,16 @@ object frGroupEditorForm: TfrGroupEditorForm
     Height = 38
     Top = 75
     Width = 493
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
     CloseButton.Enabled = False
     CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
     TabOrder = 1
     ShowButtons = [pbOK, pbCancel, pbHelp]
   end

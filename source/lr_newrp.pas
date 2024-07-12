@@ -16,7 +16,7 @@ interface
 
 uses
   Classes, SysUtils, LazFileUtils, LResources, Forms, Controls, Graphics, Dialogs,
-  Buttons, StdCtrls, ExtCtrls, ButtonPanel, LR_Const;
+  Buttons, StdCtrls, ExtCtrls, ButtonPanel, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 type
 

@@ -1,34 +1,34 @@
 object frEvForm: TfrEvForm
   Left = 422
-  Height = 391
+  Height = 586
   Top = 123
-  Width = 521
+  Width = 782
   HorzScrollBar.Page = 328
   VertScrollBar.Page = 330
   ActiveControl = VarList
   BorderIcons = [biSystemMenu, biHelp]
   Caption = 'Variables editor'
-  ClientHeight = 391
-  ClientWidth = 521
+  ClientHeight = 586
+  ClientWidth = 782
+  DesignTimePPI = 144
   OnCreate = FormCreate
   Position = poScreenCenter
   ShowHint = True
-  LCLVersion = '0.9.29'
+  LCLVersion = '3.0.0.3'
   object SB1: TSpeedButton
     AnchorSideLeft.Control = Button3
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Button3
     AnchorSideBottom.Control = Button3
     AnchorSideBottom.Side = asrBottom
-    Left = 94
+    Left = 141
     Height = 85
     Hint = 'Copy variables'
-    Top = 300
+    Top = 450
     Width = 25
     Anchors = [akTop, akLeft, akBottom]
     AutoSize = True
-    BorderSpacing.Left = 6
-    Color = clBtnFace
+    BorderSpacing.Left = 9
     Glyph.Data = {
       F6000000424DF600000000000000760000002800000010000000100000000100
       04000000000080000000C30E0000C30E00001000000010000000000000000000
@@ -39,7 +39,6 @@ object frEvForm: TfrEvForm
       000778F0008BBBB0F07778FFFF8BBBB0077778F00F888880777778FFFF0F0777
       777778FFFF007777777778888807777777777777777777777777
     }
-    NumGlyphs = 0
     OnClick = SB1Click
   end
   object SB2: TSpeedButton
@@ -48,14 +47,13 @@ object frEvForm: TfrEvForm
     AnchorSideTop.Control = Button3
     AnchorSideBottom.Control = Button3
     AnchorSideBottom.Side = asrBottom
-    Left = 119
+    Left = 178
     Height = 85
     Hint = 'Paste variables'
-    Top = 300
+    Top = 450
     Width = 25
     Anchors = [akTop, akLeft, akBottom]
     AutoSize = True
-    Color = clBtnFace
     Glyph.Data = {
       F6000000424DF600000000000000760000002800000010000000100000000100
       04000000000080000000C30E0000C30E00001000000010000000000000000000
@@ -66,7 +64,6 @@ object frEvForm: TfrEvForm
       000778FFFF8BBBB0F07778F0008BBBB0077778F0FF888880077778FF0F00F0FF
       0777778880FF0888777777777000077777777777777777777777
     }
-    NumGlyphs = 0
     OnClick = SB2Click
   end
   object Bevel1: TBevel
@@ -75,8 +72,8 @@ object frEvForm: TfrEvForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Label3
     Left = 0
-    Height = 2
-    Top = 302
+    Height = 3
+    Top = 301
     Width = 521
     Anchors = [akLeft, akRight, akBottom]
     Shape = bsTopLine
@@ -84,11 +81,11 @@ object frEvForm: TfrEvForm
   object Label1: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
-    Left = 6
+    Left = 9
     Height = 16
-    Top = 6
+    Top = 9
     Width = 52
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = '&Variable'
     FocusControl = VarCombo
     ParentColor = False
@@ -97,18 +94,18 @@ object frEvForm: TfrEvForm
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = Owner
-    Left = 242
+    Left = 363
     Height = 16
-    Top = 6
+    Top = 9
     Width = 36
-    BorderSpacing.Top = 6
+    BorderSpacing.Top = 9
     Caption = 'Va&lue'
     FocusControl = ValCombo
     ParentColor = False
   end
   object Label3: TLabel
     AnchorSideBottom.Control = Edit1
-    Left = 4
+    Left = 6
     Height = 16
     Top = 304
     Width = 70
@@ -122,19 +119,19 @@ object frEvForm: TfrEvForm
     AnchorSideTop.Control = Label1
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Label2
-    Left = 6
+    Left = 9
     Height = 29
-    Top = 28
+    Top = 42
     Width = 230
     HelpContext = 69
     Anchors = [akTop, akLeft, akRight]
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Enabled = False
     ItemHeight = 0
-    OnChange = VarComboClick
-    OnClick = VarComboClick
     Style = csDropDownList
     TabOrder = 0
+    OnChange = VarComboClick
+    OnClick = VarComboClick
   end
   object VarList: TListBox
     AnchorSideLeft.Control = Owner
@@ -142,18 +139,18 @@ object frEvForm: TfrEvForm
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Label2
     AnchorSideBottom.Control = Bevel1
-    Left = 6
+    Left = 9
     Height = 233
-    Top = 63
+    Top = 94
     Width = 230
     HelpContext = 78
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     ClickOnSelChange = False
     ItemHeight = 0
-    OnClick = VarListClick
     TabOrder = 1
     TopIndex = -1
+    OnClick = VarListClick
   end
   object ValCombo: TComboBox
     AnchorSideLeft.Control = Label2
@@ -161,19 +158,19 @@ object frEvForm: TfrEvForm
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 248
+    Left = 372
     Height = 29
-    Top = 28
+    Top = 42
     Width = 267
     HelpContext = 87
     Anchors = [akTop, akLeft, akRight]
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Enabled = False
     ItemHeight = 0
-    OnChange = ValComboClick
-    OnClick = ValComboClick
     Style = csDropDownList
     TabOrder = 2
+    OnChange = ValComboClick
+    OnClick = ValComboClick
   end
   object ValList: TListBox
     AnchorSideLeft.Control = Label2
@@ -182,56 +179,61 @@ object frEvForm: TfrEvForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Bevel1
-    Left = 248
+    Left = 372
     Height = 233
-    Top = 63
+    Top = 94
     Width = 267
     HelpContext = 93
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     ClickOnSelChange = False
     ItemHeight = 0
-    OnClick = ValListClick
-    OnExit = Edit1Exit
     TabOrder = 3
     TopIndex = -1
+    OnClick = ValListClick
+    OnExit = Edit1Exit
   end
   object Edit1: TEdit
     AnchorSideBottom.Control = ButtonPanel1
-    Left = 4
+    Left = 6
     Height = 21
     Top = 320
-    Width = 512
+    Width = 507
     HelpContext = 104
     Anchors = [akLeft, akRight, akBottom]
-    OnExit = Edit1Exit
     TabOrder = 4
+    OnExit = Edit1Exit
   end
   object Button3: TButton
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Side = asrBottom
-    Left = 4
-    Height = 85
-    Top = 300
+    Left = 6
+    Height = 0
+    Top = 535
     Width = 84
     HelpContext = 114
     Anchors = [akTop, akLeft, akBottom]
     AutoSize = True
-    BorderSpacing.Left = 12
+    BorderSpacing.Left = 18
     Caption = 'Va&riables...'
-    OnClick = Button3Click
     TabOrder = 5
+    OnClick = Button3Click
   end
   object ButtonPanel1: TButtonPanel
     Left = 6
     Height = 38
     Top = 347
     Width = 509
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
     CloseButton.Enabled = False
     CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
     TabOrder = 6
     ShowButtons = [pbOK, pbCancel, pbHelp]
   end

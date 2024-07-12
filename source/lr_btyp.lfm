@@ -1,8 +1,8 @@
 object frBandTypesForm: TfrBandTypesForm
   Left = 374
-  Height = 361
+  Height = 542
   Top = 112
-  Width = 422
+  Width = 633
   HorzScrollBar.Page = 335
   VertScrollBar.Page = 357
   ActiveControl = ButtonPanel1
@@ -10,12 +10,13 @@ object frBandTypesForm: TfrBandTypesForm
   BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'Insert new band'
-  ClientHeight = 361
-  ClientWidth = 422
+  ClientHeight = 542
+  ClientWidth = 633
+  DesignTimePPI = 144
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poOwnerFormCenter
-  LCLVersion = '0.9.29'
+  LCLVersion = '3.0.0.3'
   object GB1: TGroupBox
     Left = 0
     Height = 311
@@ -40,11 +41,16 @@ object frBandTypesForm: TfrBandTypesForm
     Height = 38
     Top = 317
     Width = 410
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
     CloseButton.Enabled = False
     CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
     TabOrder = 1
     ShowButtons = [pbOK, pbCancel, pbHelp]
   end

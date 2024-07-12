@@ -121,7 +121,7 @@ type
 
 function lrCrossTabEditor(lrObj: TfrView) : boolean;
 implementation
-uses LR_Utils, LR_DBRel, LR_Const, PropEdits, strutils;
+uses LR_Utils, LR_DBRel, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, PropEdits, strutils;
 
 const
   CT2Ind : array [TCrossCellType] of integer = (

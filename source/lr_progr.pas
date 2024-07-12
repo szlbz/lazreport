@@ -21,7 +21,7 @@ uses
   
   LCLProc,
 
-  LR_Const, LR_Class, ExtCtrls;
+  {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, LR_Class, ExtCtrls;
 
 const
   CM_BeforeModal = WM_USER + 1;

@@ -1,31 +1,32 @@
 object frHilightForm: TfrHilightForm
   Left = 366
-  Height = 295
+  Height = 442
   Top = 176
-  Width = 325
+  Width = 488
   HorzScrollBar.Page = 228
   VertScrollBar.Page = 252
   ActiveControl = Edit1
   Caption = 'Highlight attributes'
-  ClientHeight = 295
-  ClientWidth = 325
+  ClientHeight = 442
+  ClientWidth = 488
+  DesignTimePPI = 144
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.3'
+  LCLVersion = '3.0.0.3'
   object GroupBox1: TGroupBox
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = GroupBox3
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 6
+    Left = 9
     Height = 86
-    Top = 78
+    Top = 117
     Width = 313
     Anchors = [akTop, akLeft, akRight]
     AutoSize = True
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Font'
     ClientHeight = 63
     ClientWidth = 309
@@ -42,7 +43,7 @@ object frHilightForm: TfrHilightForm
       Width = 51
       Anchors = [akRight, akBottom]
       AutoSize = True
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       Caption = 'C&olor...'
       NumGlyphs = 2
       OnClick = SpeedButton1Click
@@ -60,7 +61,7 @@ object frHilightForm: TfrHilightForm
     object CB2: TCheckBox
       Left = 0
       Height = 23
-      Top = 20
+      Top = 30
       Width = 54
       HelpContext = 76
       AllowGrayed = True
@@ -70,7 +71,7 @@ object frHilightForm: TfrHilightForm
     object CB3: TCheckBox
       Left = 0
       Height = 23
-      Top = 40
+      Top = 60
       Width = 85
       HelpContext = 85
       AllowGrayed = True
@@ -84,13 +85,13 @@ object frHilightForm: TfrHilightForm
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 6
+    Left = 9
     Height = 66
-    Top = 170
+    Top = 255
     Width = 313
     Anchors = [akTop, akLeft, akRight]
     AutoSize = True
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Background'
     ClientHeight = 43
     ClientWidth = 309
@@ -106,7 +107,7 @@ object frHilightForm: TfrHilightForm
       Width = 51
       Anchors = [akRight, akBottom]
       AutoSize = True
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       Caption = 'Co&lor...'
       OnClick = SpeedButton2Click
     end
@@ -118,19 +119,19 @@ object frHilightForm: TfrHilightForm
       HelpContext = 92
       Caption = '&Transparent'
       Checked = True
-      OnClick = RB1Click
       TabOrder = 0
       TabStop = True
+      OnClick = RB1Click
     end
     object RB2: TRadioButton
       Left = 0
       Height = 23
-      Top = 20
+      Top = 30
       Width = 61
       HelpContext = 103
       Caption = 'Ot&her'
-      OnClick = RB1Click
       TabOrder = 1
+      OnClick = RB1Click
     end
   end
   object GroupBox3: TGroupBox
@@ -138,13 +139,13 @@ object frHilightForm: TfrHilightForm
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 6
+    Left = 9
     Height = 66
-    Top = 6
+    Top = 9
     Width = 313
     Anchors = [akTop, akLeft, akRight]
     AutoSize = True
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Condition'
     ClientHeight = 43
     ClientWidth = 309
@@ -154,13 +155,13 @@ object frHilightForm: TfrHilightForm
       AnchorSideTop.Control = GroupBox3
       AnchorSideRight.Control = GroupBox3
       AnchorSideRight.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 31
-      Top = 6
+      Top = 9
       Width = 297
       HelpContext = 113
       Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       TabOrder = 0
     end
   end
@@ -169,6 +170,7 @@ object frHilightForm: TfrHilightForm
     Height = 41
     Top = 248
     Width = 313
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'
@@ -205,7 +207,7 @@ object frHilightForm: TfrHilightForm
       'ColorS=F0FBFF'
       'ColorT=A4A0A0'
     )
-    left = 152
-    top = 144
+    Left = 228
+    Top = 216
   end
 end

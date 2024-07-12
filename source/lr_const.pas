@@ -8,7 +8,7 @@
 {                                         }
 {*****************************************}
 
-unit LR_Const;
+unit lr_const;
 
 interface
 
@@ -488,7 +488,11 @@ resourcestring
   sFRDesignerFormGrid = 'Grid';
   sFRDesignerFormGridAlign = 'Grid align';
   sFRDesignerFormFitGrid = 'Fit to grid';
-  sFRDesignerFormGuides ='显示辅助线';//LBZ 2022.06.17 增加
+  sFRDesignerFormGuides ='Show Guides';//LBZ 2022.06.17 增加
+  SVerticalequaldistributiontable='Vertical Equal Distribution Table';//LBZ
+  ShorizontalEqualdistributiontable='Horizontal Equal Distribution Table';//lbz
+  SSplitCell='Split Cell';//LBZ
+  SMergecell='Merge Cell';//LBZ
   sFRDesignerFormClose = 'Close';
   sFRDesignerFormCloseDesigner = 'Close designer';
   sFRDesignerFormLeftAlign = 'Left align';

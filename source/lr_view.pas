@@ -22,7 +22,7 @@ uses
   // LazUtils
   LazUTF8,
   // LazReport
-  LR_Const,
+  {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif},
   // Printers
   PrintersDlgs;
 

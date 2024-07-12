@@ -21,7 +21,7 @@ uses
   SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   Printers,LCLType,LCLProc,
 
-  LR_Class, LR_Const;
+  LR_Class, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 type
 

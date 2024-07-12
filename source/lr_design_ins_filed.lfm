@@ -1,22 +1,24 @@
 object lrFieldsList: TlrFieldsList
   Left = 0
-  Height = 330
+  Height = 495
   Top = 0
-  Width = 208
-  ClientHeight = 330
-  ClientWidth = 208
+  Width = 312
+  ClientHeight = 495
+  ClientWidth = 312
+  DesignTimePPI = 144
+  ParentFont = False
   TabOrder = 0
   DesignLeft = 779
   DesignTop = 316
   object fPanelHeader: TPanel
     Left = 0
-    Height = 24
+    Height = 36
     Top = 0
     Width = 208
     Align = alTop
     BevelInner = bvLowered
     Caption = 'Data inspector'
-    ClientHeight = 24
+    ClientHeight = 36
     ClientWidth = 208
     TabOrder = 0
     OnDblClick = SpeedButton1Click
@@ -28,10 +30,10 @@ object lrFieldsList: TlrFieldsList
       AnchorSideRight.Control = SpeedButton2
       AnchorSideBottom.Control = fPanelHeader
       AnchorSideBottom.Side = asrBottom
-      Left = 166
+      Left = 156
       Height = 20
-      Top = 2
-      Width = 20
+      Top = 3
+      Width = 30
       Anchors = [akTop, akRight, akBottom]
       Caption = '-'
       OnClick = SpeedButton1Click
@@ -42,10 +44,10 @@ object lrFieldsList: TlrFieldsList
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = fPanelHeader
       AnchorSideBottom.Side = asrBottom
-      Left = 186
+      Left = 176
       Height = 20
-      Top = 2
-      Width = 20
+      Top = 3
+      Width = 30
       Anchors = [akTop, akRight, akBottom]
       Caption = 'x'
       OnClick = SpeedButton2Click
@@ -83,9 +85,9 @@ object lrFieldsList: TlrFieldsList
         Width = 204
         Align = alTop
         ItemHeight = 0
-        OnChange = cbDSListChange
         Style = csDropDownList
         TabOrder = 1
+        OnChange = cbDSListChange
       end
     end
     object TabSheet2: TTabSheet
@@ -100,9 +102,9 @@ object lrFieldsList: TlrFieldsList
         HelpContext = 32
         Align = alTop
         ItemHeight = 0
-        OnChange = ValComboChange
         Style = csDropDownList
         TabOrder = 0
+        OnChange = ValComboChange
       end
       object ValList: TListBox
         Left = 0

@@ -52,7 +52,7 @@ implementation
 
 {$R *.lfm}
 
-uses LR_Class, LR_Const, LR_Utils, LR_DBRel, DB;
+uses LR_Class, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, LR_Utils, LR_DBRel, DB;
 
 var
   LastDB: String;

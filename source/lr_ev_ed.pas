@@ -77,7 +77,7 @@ implementation
 
 {$R *.lfm}
 
-uses LR_Vared, LR_Const, LR_Utils, LR_DBRel, DB;
+uses LR_Vared, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, LR_Utils, LR_DBRel, DB;
 
 var
   SMemo: TStringList;

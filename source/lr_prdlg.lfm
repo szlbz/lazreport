@@ -1,23 +1,24 @@
 object frPrintForm: TfrPrintForm
   Left = 414
-  Height = 296
+  Height = 444
   Top = 173
-  Width = 390
+  Width = 585
   HorzScrollBar.Page = 367
   VertScrollBar.Page = 269
   ActiveControl = OkButton
   BorderStyle = bsDialog
   Caption = 'Print'
-  ClientHeight = 296
-  ClientWidth = 390
+  ClientHeight = 444
+  ClientWidth = 585
+  DesignTimePPI = 144
   OnCreate = FormCreate
   OnDeactivate = FormDeactivate
   Position = poScreenCenter
-  LCLVersion = '1.3'
+  LCLVersion = '3.0.0.3'
   object Image1: TImage
-    Left = 336
+    Left = 504
     Height = 16
-    Top = 176
+    Top = 264
     Width = 18
     AutoSize = True
     Picture.Data = {
@@ -39,12 +40,12 @@ object frPrintForm: TfrPrintForm
     AnchorSideLeft.Control = Owner
     AnchorSideBottom.Control = E1
     AnchorSideBottom.Side = asrBottom
-    Left = 6
+    Left = 9
     Height = 21
     Top = 90
     Width = 44
     Anchors = [akLeft, akBottom]
-    BorderSpacing.Left = 6
+    BorderSpacing.Left = 9
     Caption = 'Copies'
     ParentColor = False
   end
@@ -55,12 +56,12 @@ object frPrintForm: TfrPrintForm
     AnchorSideRight.Control = CancelButton
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 6
+    Left = 9
     Height = 173
-    Top = 117
+    Top = 176
     Width = 316
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Page range'
     ClientHeight = 150
     ClientWidth = 312
@@ -73,13 +74,13 @@ object frPrintForm: TfrPrintForm
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = GroupBox2
       AnchorSideBottom.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 43
-      Top = 101
+      Top = 152
       Width = 300
       Anchors = [akTop, akLeft, akRight, akBottom]
       AutoSize = False
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       Caption = 'Enter page numbers and/or page ranges, separated by commas. For example, 1,3,5-12'
       ParentColor = False
       WordWrap = True
@@ -87,12 +88,12 @@ object frPrintForm: TfrPrintForm
     object RB1: TRadioButton
       AnchorSideLeft.Control = GroupBox2
       AnchorSideTop.Control = GroupBox2
-      Left = 6
+      Left = 9
       Height = 23
-      Top = 6
+      Top = 9
       Width = 40
       HelpContext = 108
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       Caption = 'All'
       Checked = True
       TabOrder = 0
@@ -102,12 +103,12 @@ object frPrintForm: TfrPrintForm
       AnchorSideLeft.Control = GroupBox2
       AnchorSideTop.Control = RB1
       AnchorSideTop.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 23
-      Top = 35
+      Top = 52
       Width = 108
       HelpContext = 118
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       Caption = 'Current &page'
       TabOrder = 1
     end
@@ -115,16 +116,16 @@ object frPrintForm: TfrPrintForm
       AnchorSideLeft.Control = GroupBox2
       AnchorSideBottom.Control = E2
       AnchorSideBottom.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 23
       Top = 72
       Width = 86
       HelpContext = 124
       Anchors = [akLeft, akBottom]
-      BorderSpacing.Left = 6
+      BorderSpacing.Left = 9
       Caption = '&Numbers:'
-      OnClick = RB3Click
       TabOrder = 2
+      OnClick = RB3Click
     end
     object E2: TEdit
       AnchorSideLeft.Control = RB3
@@ -133,15 +134,15 @@ object frPrintForm: TfrPrintForm
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = GroupBox2
       AnchorSideRight.Side = asrBottom
-      Left = 98
+      Left = 147
       Height = 31
-      Top = 64
+      Top = 96
       Width = 208
       HelpContext = 133
       Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Around = 6
-      OnClick = E2Click
+      BorderSpacing.Around = 9
       TabOrder = 3
+      OnClick = E2Click
     end
   end
   object OkButton: TButton
@@ -150,15 +151,15 @@ object frPrintForm: TfrPrintForm
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 328
+    Left = 492
     Height = 33
-    Top = 80
+    Top = 120
     Width = 56
     HelpContext = 40
     Anchors = [akTop, akLeft, akRight]
     AutoSize = True
-    BorderSpacing.Top = 6
-    BorderSpacing.Right = 6
+    BorderSpacing.Top = 9
+    BorderSpacing.Right = 9
     Caption = 'Ok'
     Default = True
     ModalResult = 1
@@ -171,12 +172,12 @@ object frPrintForm: TfrPrintForm
     AnchorSideRight.Side = asrBottom
     Left = 328
     Height = 33
-    Top = 119
+    Top = 178
     Width = 56
     HelpContext = 50
     Anchors = [akTop, akRight]
     AutoSize = True
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Cancel = True
     Caption = 'Cancel'
     ModalResult = 2
@@ -187,13 +188,13 @@ object frPrintForm: TfrPrintForm
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 6
+    Left = 9
     Height = 68
-    Top = 6
+    Top = 9
     Width = 378
     Anchors = [akTop, akLeft, akRight]
     AutoSize = True
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Printer'
     ClientHeight = 45
     ClientWidth = 374
@@ -204,33 +205,33 @@ object frPrintForm: TfrPrintForm
       AnchorSideRight.Side = asrBottom
       Left = 289
       Height = 33
-      Top = 6
+      Top = 9
       Width = 79
       HelpContext = 152
       Anchors = [akTop, akRight]
       AutoSize = True
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       Caption = 'Properties'
-      OnClick = PropButtonClick
       TabOrder = 0
+      OnClick = PropButtonClick
     end
     object CB1: TComboBox
       AnchorSideLeft.Control = GroupBox1
       AnchorSideTop.Control = GroupBox1
       AnchorSideRight.Control = PropButton
-      Left = 6
+      Left = 9
       Height = 33
-      Top = 6
+      Top = 9
       Width = 277
       HelpContext = 142
       Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       ItemHeight = 0
+      Style = csOwnerDrawFixed
+      TabOrder = 1
       OnChange = CB1Click
       OnClick = CB1Click
       OnDrawItem = CB1DrawItem
-      Style = csOwnerDrawFixed
-      TabOrder = 1
     end
   end
   object cbCollate: TCheckBox
@@ -238,12 +239,12 @@ object frPrintForm: TfrPrintForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Control = E1
     AnchorSideBottom.Side = asrBottom
-    Left = 143
+    Left = 214
     Height = 23
     Top = 88
     Width = 70
     Anchors = [akLeft, akBottom]
-    BorderSpacing.Left = 6
+    BorderSpacing.Left = 9
     Caption = 'Collate'
     TabOrder = 4
   end
@@ -252,16 +253,16 @@ object frPrintForm: TfrPrintForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = GroupBox1
     AnchorSideTop.Side = asrBottom
-    Left = 56
+    Left = 84
     Height = 31
-    Top = 80
-    Width = 81
-    BorderSpacing.Around = 6
+    Top = 120
+    Width = 122
+    BorderSpacing.Around = 9
     TabOrder = 5
     Value = 1
   end
   object PrinterSetupDialog1: TPrinterSetupDialog
-    left = 264
-    top = 80
+    Left = 396
+    Top = 120
   end
 end

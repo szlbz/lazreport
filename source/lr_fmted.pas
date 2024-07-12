@@ -64,7 +64,7 @@ implementation
 
 {$R *.lfm}
 
-uses LR_Const;
+uses {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 {$PUSH}
 {$WARNINGS OFF}

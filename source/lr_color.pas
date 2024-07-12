@@ -18,7 +18,7 @@ uses
   SysUtils, Classes, Graphics, Controls,
   Forms, Dialogs, Buttons, ExtCtrls,
 
-  LR_Const;
+  {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 type
   TColorSelector = class(TPanel)

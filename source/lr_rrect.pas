@@ -12,9 +12,9 @@
 {            Changer le TButton en TImage             }
 {            pour le choix de la couleur              }
 {            de l'ombre.                              }
-{            Initialisé avec mots entiers             }
+{            Initialisavec mots entiers             }
 {            par defaut                               }
-{ 22/06/99 : Ajouté la possibilité de dégradé         }
+{ 22/06/99 : Ajoutla possibilitde dégrad        }
 {            mais dans ce cas, c'est un rectangle     }
 { 10/11/99 : Update for the FR 2.31 version           }
 {                                                     }
@@ -174,7 +174,7 @@ type
   {$ENDIF}
 implementation
 
-uses LR_Const, LR_Var, LR_Flds;
+uses {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, LR_Var, LR_Flds;
 
 {$IFNDEF LCLNOGUI}
 {$R *.lfm}

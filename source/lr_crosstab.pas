@@ -211,7 +211,7 @@ const
     ftBCD, ftAutoInc, ftLargeint];
 
 implementation
-uses {$IFNDEF LCLNOGUI}lr_CrossTabEditor, {$ENDIF}LR_Utils, LR_Const, strutils, variants, Math;
+uses {$IFNDEF LCLNOGUI}lr_CrossTabEditor, {$ENDIF}LR_Utils, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, strutils, variants, Math;
 
 {$R *.res}
 

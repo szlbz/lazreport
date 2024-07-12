@@ -18,8 +18,12 @@ uses
   Classes, SysUtils, LResources,
   Forms, Controls, Graphics, Dialogs,
   Buttons, StdCtrls,ExtCtrls, ButtonPanel,
-
-  LR_Const;
+  {$ifdef Chinese}
+  lr_const_CN
+  {$else}
+  lr_const
+  {$endif}
+  ;
 
 type
 

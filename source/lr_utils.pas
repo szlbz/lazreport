@@ -83,7 +83,7 @@ function UTF8CountWords(const str:string; out WordCount,SpcCount,SpcSize:Integer
 
 implementation
 
-uses LR_Class, LR_Const, LR_Pars, LazUtilsStrConsts, LR_DSet, LR_DBSet, LR_DBComponent;
+uses LR_Class, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, LR_Pars, LazUtilsStrConsts, LR_DSet, LR_DBSet, LR_DBComponent;
 
 var
   PreviousFormatSettings: TFormatSettings;

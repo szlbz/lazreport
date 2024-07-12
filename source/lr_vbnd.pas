@@ -54,7 +54,7 @@ implementation
 
 {$R *.lfm}
 
-uses LR_DSet, LR_Const, LR_Utils;
+uses LR_DSet, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, LR_Utils;
 
 procedure TfrVBandEditorForm.ShowEditor(t: TfrView);
 var

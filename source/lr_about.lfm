@@ -1,19 +1,20 @@
 object frAboutForm: TfrAboutForm
   Left = 228
-  Height = 174
+  Height = 261
   Top = 135
-  Width = 285
+  Width = 428
   HorzScrollBar.Page = 278
   VertScrollBar.Page = 149
   ActiveControl = ButtonPanel1
   BorderStyle = bsDialog
   Caption = 'About'
-  ClientHeight = 174
-  ClientWidth = 285
+  ClientHeight = 261
+  ClientWidth = 428
+  DesignTimePPI = 144
   Font.Color = clBlack
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '0.9.29'
+  LCLVersion = '3.0.0.3'
   object Bevel2: TBevel
     Left = 0
     Height = 126
@@ -23,16 +24,16 @@ object frAboutForm: TfrAboutForm
     Shape = bsFrame
   end
   object Bevel1: TBevel
-    Left = 16
-    Height = 57
-    Top = 16
-    Width = 57
+    Left = 24
+    Height = 86
+    Top = 24
+    Width = 86
     Shape = bsFrame
   end
   object Image1: TImage
-    Left = 20
+    Left = 30
     Height = 50
-    Top = 20
+    Top = 30
     Width = 50
     AutoSize = True
     Picture.Data = {
@@ -87,22 +88,22 @@ object frAboutForm: TfrAboutForm
     }
   end
   object Label1: TLabel
-    Left = 96
+    Left = 144
     Height = 16
-    Top = 16
+    Top = 24
     Width = 72
     Alignment = taCenter
     Caption = 'FreeReport'
     Font.Color = clBlack
-    Font.Height = -13
+    Font.Height = -20
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 104
+    Left = 156
     Height = 14
-    Top = 32
+    Top = 48
     Width = 60
     Alignment = taCenter
     Caption = 'Version 2.32'
@@ -111,9 +112,9 @@ object frAboutForm: TfrAboutForm
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 88
+    Left = 132
     Height = 14
-    Top = 64
+    Top = 96
     Width = 116
     Alignment = taCenter
     Caption = 'Copyright (©) 1998-2002'
@@ -122,9 +123,9 @@ object frAboutForm: TfrAboutForm
     ParentFont = False
   end
   object Label4: TLabel
-    Left = 88
+    Left = 132
     Height = 14
-    Top = 48
+    Top = 72
     Width = 85
     Alignment = taCenter
     Caption = 'by Tzyganenko A.'
@@ -137,11 +138,16 @@ object frAboutForm: TfrAboutForm
     Height = 36
     Top = 132
     Width = 273
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
     OKButton.Enabled = False
     HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
     CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
     CancelButton.Enabled = False
     TabOrder = 0
     ShowButtons = [pbClose, pbHelp]

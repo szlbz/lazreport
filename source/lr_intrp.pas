@@ -71,7 +71,7 @@ type
 
 implementation
 
-uses Variants, LR_Const;
+uses Variants, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 type
   LRec = record

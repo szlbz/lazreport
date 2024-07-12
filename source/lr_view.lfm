@@ -9,8 +9,8 @@ object frPreviewForm: TfrPreviewForm
   VertScrollBar.Range = 199
   ActiveControl = PanTop
   Caption = 'Preview'
-  ClientHeight = 946
-  ClientWidth = 1336
+  ClientHeight = 833
+  ClientWidth = 1052
   DesignTimePPI = 144
   Font.Color = clBlack
   KeyPreview = True
@@ -23,6 +23,7 @@ object frPreviewForm: TfrPreviewForm
   OnMouseDown = FormMouseDown
   OnResize = FormResize
   ShowHint = True
+  LCLVersion = '3.0.0.3'
   WindowState = wsMaximized
   object PanTop: TPanel
     Left = 0

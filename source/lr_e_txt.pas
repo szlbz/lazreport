@@ -65,7 +65,7 @@ type
 
 implementation
 
-uses LR_Const, LR_E_TXT_Params;
+uses {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, LR_E_TXT_Params;
 
 var
   FShowExportParamsDlg: boolean;

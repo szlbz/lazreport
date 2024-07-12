@@ -52,7 +52,7 @@ type
 
 implementation
 
-uses LR_Const;
+uses {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 procedure TfrCSVExportFilter.GetUsedFont;
 begin

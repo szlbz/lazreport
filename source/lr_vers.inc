@@ -10,6 +10,8 @@
 
 {$mode objfpc}
 
+{$DEFINE Chinese}
+
 {$B-} {- Complete Boolean Evaluation }
 {$R-} {- Range-Checking }
 {$V-} {- Var-String Checking }

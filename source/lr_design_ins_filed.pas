@@ -57,7 +57,7 @@ var
   lrFieldsList:TlrFieldsList = nil;
 
 implementation
-uses LR_Utils, LR_Class, LR_DBRel, LR_Desgn, LR_Const;
+uses LR_Utils, LR_Class, LR_DBRel, LR_Desgn, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 {$R *.lfm}
 

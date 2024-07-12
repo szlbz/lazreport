@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons, ExtCtrls, ButtonPanel, SynEdit, LR_Const;
+  Buttons, ExtCtrls, ButtonPanel, SynEdit, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 type
 

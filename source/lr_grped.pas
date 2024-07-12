@@ -19,7 +19,7 @@ uses
   Forms, Controls, Graphics, Dialogs,
   Buttons, StdCtrls,ExtCtrls,
 
-  LR_Class,LR_Const, ButtonPanel, EditBtn;
+  LR_Class,{$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, ButtonPanel, EditBtn;
 
 type
 

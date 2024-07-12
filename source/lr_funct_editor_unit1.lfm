@@ -1,26 +1,27 @@
 object LR_FunctEditor1Form: TLR_FunctEditor1Form
   Left = 360
-  Height = 264
+  Height = 396
   Top = 180
-  Width = 412
+  Width = 618
   HorzScrollBar.Page = 411
   VertScrollBar.Page = 299
   ActiveControl = Panel1
   BorderIcons = [biSystemMenu, biHelp]
   Caption = 'LR_FunctEditor1Form'
-  ClientHeight = 264
-  ClientWidth = 412
+  ClientHeight = 396
+  ClientWidth = 618
+  DesignTimePPI = 144
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.5'
+  LCLVersion = '3.0.0.3'
   object Panel1: TPanel
     Left = 0
-    Height = 84
+    Height = 126
     Top = 0
     Width = 412
     Align = alTop
     BevelOuter = bvLowered
-    ClientHeight = 84
+    ClientHeight = 126
     ClientWidth = 412
     TabOrder = 0
     object Label1: TLabel
@@ -63,12 +64,12 @@ object LR_FunctEditor1Form: TLR_FunctEditor1Form
       AnchorSideLeft.Control = GroupBox1
       AnchorSideBottom.Control = Edit1
       AnchorSideBottom.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 13
       Top = 14
       Width = 56
       Anchors = [akLeft, akBottom]
-      BorderSpacing.Left = 6
+      BorderSpacing.Left = 9
       Caption = 'Argument 1'
       ParentColor = False
     end
@@ -76,12 +77,12 @@ object LR_FunctEditor1Form: TLR_FunctEditor1Form
       AnchorSideLeft.Control = GroupBox1
       AnchorSideBottom.Control = Edit2
       AnchorSideBottom.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 13
       Top = 41
       Width = 56
       Anchors = [akLeft, akBottom]
-      BorderSpacing.Left = 6
+      BorderSpacing.Left = 9
       Caption = 'Argument 2'
       ParentColor = False
     end
@@ -89,12 +90,12 @@ object LR_FunctEditor1Form: TLR_FunctEditor1Form
       AnchorSideLeft.Control = GroupBox1
       AnchorSideBottom.Control = Edit3
       AnchorSideBottom.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 13
       Top = 68
       Width = 56
       Anchors = [akLeft, akBottom]
-      BorderSpacing.Left = 6
+      BorderSpacing.Left = 9
       Caption = 'Argument 3'
       ParentColor = False
     end
@@ -105,13 +106,13 @@ object LR_FunctEditor1Form: TLR_FunctEditor1Form
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = Edit1
       AnchorSideBottom.Side = asrBottom
-      Left = 375
+      Left = 362
       Height = 21
-      Top = 6
-      Width = 27
+      Top = 9
+      Width = 40
       Anchors = [akTop, akRight, akBottom]
-      BorderSpacing.Right = 6
-      BorderSpacing.InnerBorder = 2
+      BorderSpacing.Right = 9
+      BorderSpacing.InnerBorder = 3
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000064000000640000000000000000000000000000000000
@@ -157,13 +158,13 @@ object LR_FunctEditor1Form: TLR_FunctEditor1Form
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = GroupBox1
       AnchorSideRight.Control = BitBtn3
-      Left = 68
+      Left = 102
       Height = 21
-      Top = 6
+      Top = 9
       Width = 307
       Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Left = 6
-      BorderSpacing.Top = 6
+      BorderSpacing.Left = 9
+      BorderSpacing.Top = 9
       TabOrder = 1
     end
     object Edit2: TEdit
@@ -171,13 +172,13 @@ object LR_FunctEditor1Form: TLR_FunctEditor1Form
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Edit1
       AnchorSideTop.Side = asrBottom
-      Left = 68
+      Left = 102
       Height = 21
-      Top = 33
-      Width = 306
+      Top = 50
+      Width = 255
       Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Left = 6
-      BorderSpacing.Top = 6
+      BorderSpacing.Left = 9
+      BorderSpacing.Top = 9
       TabOrder = 2
     end
     object BitBtn4: TBitBtn
@@ -187,13 +188,13 @@ object LR_FunctEditor1Form: TLR_FunctEditor1Form
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = Edit2
       AnchorSideBottom.Side = asrBottom
-      Left = 375
+      Left = 362
       Height = 21
-      Top = 33
-      Width = 27
+      Top = 50
+      Width = 40
       Anchors = [akTop, akRight, akBottom]
-      BorderSpacing.Right = 6
-      BorderSpacing.InnerBorder = 2
+      BorderSpacing.Right = 9
+      BorderSpacing.InnerBorder = 3
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000064000000640000000000000000000000000000000000
@@ -239,13 +240,13 @@ object LR_FunctEditor1Form: TLR_FunctEditor1Form
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Edit2
       AnchorSideTop.Side = asrBottom
-      Left = 68
+      Left = 102
       Height = 21
-      Top = 60
-      Width = 306
+      Top = 90
+      Width = 255
       Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Left = 6
-      BorderSpacing.Top = 6
+      BorderSpacing.Left = 9
+      BorderSpacing.Top = 9
       TabOrder = 4
     end
     object BitBtn5: TBitBtn
@@ -255,13 +256,13 @@ object LR_FunctEditor1Form: TLR_FunctEditor1Form
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = Edit3
       AnchorSideBottom.Side = asrBottom
-      Left = 375
+      Left = 362
       Height = 21
-      Top = 60
-      Width = 27
+      Top = 90
+      Width = 40
       Anchors = [akTop, akRight, akBottom]
-      BorderSpacing.Right = 6
-      BorderSpacing.InnerBorder = 2
+      BorderSpacing.Right = 9
+      BorderSpacing.InnerBorder = 3
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000064000000640000000000000000000000000000000000
@@ -308,6 +309,7 @@ object LR_FunctEditor1Form: TLR_FunctEditor1Form
     Height = 34
     Top = 224
     Width = 400
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'

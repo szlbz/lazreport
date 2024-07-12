@@ -75,7 +75,7 @@ implementation
 
 {$R *.lfm}
 
-uses LR_Desgn, LR_Fmted, LR_Var, LR_Flds, LR_Const, lr_expres, strutils;
+uses LR_Desgn, LR_Fmted, LR_Var, LR_Flds, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, lr_expres, strutils;
 
 function TfrEditorForm.ShowEditor(AView: TfrView): TModalResult;
 begin

@@ -1,18 +1,19 @@
 object frBandEditorForm: TfrBandEditorForm
   Left = 487
-  Height = 154
+  Height = 231
   Top = 310
-  Width = 341
+  Width = 512
   HorzScrollBar.Page = 224
   VertScrollBar.Page = 125
   ActiveControl = Edit1
   BorderStyle = bsDialog
   Caption = 'Band data source'
-  ClientHeight = 154
-  ClientWidth = 341
+  ClientHeight = 231
+  ClientWidth = 512
+  DesignTimePPI = 144
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '0.9.29'
+  LCLVersion = '3.0.0.3'
   object GB1: TGroupBox
     Left = 0
     Height = 104
@@ -27,12 +28,12 @@ object frBandEditorForm: TfrBandEditorForm
       AnchorSideLeft.Control = GB1
       AnchorSideBottom.Control = Edit1
       AnchorSideBottom.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 16
       Top = 46
       Width = 84
       Anchors = [akLeft, akBottom]
-      BorderSpacing.Left = 6
+      BorderSpacing.Left = 9
       Caption = '&Record count'
       FocusControl = Edit1
       ParentColor = False
@@ -42,17 +43,17 @@ object frBandEditorForm: TfrBandEditorForm
       AnchorSideTop.Control = GB1
       AnchorSideRight.Control = GB1
       AnchorSideRight.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 29
-      Top = 6
+      Top = 9
       Width = 327
       HelpContext = 88
       Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       ItemHeight = 0
-      OnChange = CB1Click
       Style = csDropDownList
       TabOrder = 0
+      OnChange = CB1Click
     end
     object Edit1: TEdit
       AnchorSideLeft.Control = Label2
@@ -61,13 +62,13 @@ object frBandEditorForm: TfrBandEditorForm
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = GB1
       AnchorSideRight.Side = asrBottom
-      Left = 96
+      Left = 144
       Height = 21
-      Top = 41
+      Top = 62
       Width = 237
       HelpContext = 95
       Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       TabOrder = 1
       Text = '1'
     end
@@ -77,11 +78,16 @@ object frBandEditorForm: TfrBandEditorForm
     Height = 38
     Top = 110
     Width = 329
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
     CloseButton.Enabled = False
     CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
     TabOrder = 1
     ShowButtons = [pbOK, pbCancel, pbHelp]
   end

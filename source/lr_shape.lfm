@@ -1,23 +1,24 @@
 object frShapeForm: TfrShapeForm
   Left = 344
-  Height = 143
+  Height = 214
   Top = 163
-  Width = 367
+  Width = 550
   HorzScrollBar.Page = 276
   VertScrollBar.Page = 93
   ActiveControl = ButtonPanel1
   BorderStyle = bsDialog
   Caption = 'Shape'
-  ClientHeight = 143
-  ClientWidth = 367
+  ClientHeight = 214
+  ClientWidth = 550
+  DesignTimePPI = 144
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '0.9.29'
+  LCLVersion = '3.0.0.3'
   object Image1: TImage
-    Left = 32
-    Height = 16
-    Top = 64
-    Width = 16
+    Left = 48
+    Height = 24
+    Top = 96
+    Width = 24
     Picture.Data = {
       07544269746D6170F6000000424DF60000000000000076000000280000001000
       0000100000000100040000000000800000000000000000000000100000000000
@@ -37,13 +38,13 @@ object frShapeForm: TfrShapeForm
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 6
+    Left = 9
     Height = 57
-    Top = 6
+    Top = 9
     Width = 355
     Anchors = [akTop, akLeft, akRight]
     AutoSize = True
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = ' Shape kind '
     ClientHeight = 41
     ClientWidth = 353
@@ -53,12 +54,12 @@ object frShapeForm: TfrShapeForm
       AnchorSideTop.Control = GroupBox1
       AnchorSideRight.Control = GroupBox1
       AnchorSideRight.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 29
-      Top = 6
+      Top = 9
       Width = 341
       Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       ItemHeight = 0
       Style = csDropDownList
       TabOrder = 0
@@ -69,11 +70,16 @@ object frShapeForm: TfrShapeForm
     Height = 38
     Top = 99
     Width = 355
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
     CloseButton.Enabled = False
     CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
     TabOrder = 1
     ShowButtons = [pbOK, pbCancel, pbHelp]
   end

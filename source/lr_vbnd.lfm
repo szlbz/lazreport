@@ -1,28 +1,29 @@
 object frVBandEditorForm: TfrVBandEditorForm
   Left = 515
-  Height = 195
+  Height = 292
   Top = 286
-  Width = 477
+  Width = 716
   HorzScrollBar.Page = 398
   VertScrollBar.Page = 125
   ActiveControl = edtRecCount
   Caption = 'Band data sources'
-  ClientHeight = 195
-  ClientWidth = 477
+  ClientHeight = 292
+  ClientWidth = 716
+  DesignTimePPI = 144
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '0.9.29'
+  LCLVersion = '3.0.0.3'
   object GroupBox1: TGroupBox
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = GroupBox2
     AnchorSideBottom.Control = ButtonPanel1
-    Left = 6
+    Left = 9
     Height = 139
-    Top = 6
+    Top = 9
     Width = 257
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Bands'
     ClientHeight = 123
     ClientWidth = 255
@@ -36,9 +37,9 @@ object frVBandEditorForm: TfrVBandEditorForm
       Align = alClient
       ClickOnSelChange = False
       ItemHeight = 0
-      OnClick = LB1Click
       TabOrder = 0
       TopIndex = -1
+      OnClick = LB1Click
     end
   end
   object GroupBox2: TGroupBox
@@ -61,29 +62,29 @@ object frVBandEditorForm: TfrVBandEditorForm
       AnchorSideTop.Side = asrBottom
       AnchorSideBottom.Control = edtRecCount
       AnchorSideBottom.Side = asrBottom
-      Left = 6
+      Left = 9
       Height = 16
       Top = 46
       Width = 84
       Anchors = [akLeft, akBottom]
-      BorderSpacing.Left = 6
+      BorderSpacing.Left = 9
       Caption = '&Record count'
       ParentColor = False
     end
     object CB1: TComboBox
       AnchorSideLeft.Control = GroupBox2
       AnchorSideTop.Control = GroupBox2
-      Left = 6
+      Left = 9
       Height = 29
-      Top = 6
-      Width = 194
+      Top = 9
+      Width = 291
       HelpContext = 88
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       ItemHeight = 0
-      OnChange = CB1Click
-      OnExit = CB1Exit
       Style = csDropDownList
       TabOrder = 0
+      OnChange = CB1Click
+      OnExit = CB1Exit
     end
     object edtRecCount: TSpinEdit
       AnchorSideLeft.Control = Label1
@@ -92,13 +93,13 @@ object frVBandEditorForm: TfrVBandEditorForm
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = GroupBox2
       AnchorSideRight.Side = asrBottom
-      Left = 96
+      Left = 144
       Height = 21
-      Top = 41
+      Top = 62
       Width = 104
       HelpContext = 95
       Anchors = [akTop, akLeft, akRight]
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       OnExit = CB1Exit
       TabOrder = 1
       Value = 1
@@ -109,11 +110,16 @@ object frVBandEditorForm: TfrVBandEditorForm
     Height = 38
     Top = 151
     Width = 465
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
     CloseButton.Enabled = False
     CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
     TabOrder = 2
     ShowButtons = [pbOK, pbCancel, pbHelp]
   end

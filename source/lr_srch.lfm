@@ -1,26 +1,27 @@
 object frPreviewSearchForm: TfrPreviewSearchForm
   Left = 635
-  Height = 190
+  Height = 285
   Top = 405
-  Width = 383
+  Width = 574
   HorzScrollBar.Page = 290
   VertScrollBar.Page = 166
   ActiveControl = Edit1
   Caption = 'Find text'
-  ClientHeight = 190
-  ClientWidth = 383
+  ClientHeight = 285
+  ClientWidth = 574
+  DesignTimePPI = 144
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.1'
+  LCLVersion = '3.0.0.3'
   object Label1: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
-    Left = 6
+    Left = 9
     Height = 16
-    Top = 6
+    Top = 9
     Width = 67
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Text to &find'
     FocusControl = Edit1
     ParentColor = False
@@ -31,13 +32,13 @@ object frPreviewSearchForm: TfrPreviewSearchForm
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 12
+    Left = 18
     Height = 25
-    Top = 28
+    Top = 42
     Width = 365
     HelpContext = 98
     Anchors = [akTop, akLeft, akRight]
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     TabOrder = 0
   end
   object ButtonPanel1: TButtonPanel
@@ -45,6 +46,7 @@ object frPreviewSearchForm: TfrPreviewSearchForm
     Height = 42
     Top = 142
     Width = 371
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'
@@ -60,7 +62,7 @@ object frPreviewSearchForm: TfrPreviewSearchForm
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = Owner
-    Left = 191
+    Left = 286
     Height = 1
     Top = 0
     Width = 1
@@ -73,13 +75,13 @@ object frPreviewSearchForm: TfrPreviewSearchForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = ButtonPanel1
-    Left = 197
+    Left = 296
     Height = 77
-    Top = 59
+    Top = 88
     Width = 180
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoFill = True
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Origin'
     ChildSizing.LeftRightSpacing = 6
     ChildSizing.TopBottomSpacing = 6
@@ -103,13 +105,13 @@ object frPreviewSearchForm: TfrPreviewSearchForm
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Label2
     AnchorSideBottom.Control = ButtonPanel1
-    Left = 6
+    Left = 9
     Height = 77
-    Top = 59
+    Top = 88
     Width = 179
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoFill = True
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Options'
     ChildSizing.LeftRightSpacing = 6
     ChildSizing.TopBottomSpacing = 6

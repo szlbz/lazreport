@@ -1,26 +1,27 @@
 object frVaredForm: TfrVaredForm
   Left = 481
-  Height = 288
+  Height = 432
   Top = 206
-  Width = 381
+  Width = 572
   HorzScrollBar.Page = 248
   VertScrollBar.Page = 268
   ActiveControl = Memo1
   Caption = 'Variables list'
-  ClientHeight = 288
-  ClientWidth = 381
+  ClientHeight = 432
+  ClientWidth = 572
+  DesignTimePPI = 144
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.1'
+  LCLVersion = '3.0.0.3'
   object Label1: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
-    Left = 6
+    Left = 9
     Height = 16
-    Top = 6
+    Top = 9
     Width = 163
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = '&Categories and variables'
     FocusControl = Memo1
     ParentColor = False
@@ -32,13 +33,13 @@ object frVaredForm: TfrVaredForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = ButtonPanel1
-    Left = 6
+    Left = 9
     Height = 206
-    Top = 28
+    Top = 42
     Width = 369
     HelpContext = 79
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     ScrollBars = ssAutoBoth
     TabOrder = 0
   end
@@ -47,6 +48,7 @@ object frVaredForm: TfrVaredForm
     Height = 42
     Top = 240
     Width = 369
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'

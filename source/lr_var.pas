@@ -21,7 +21,7 @@ uses
 
   LCLType,LCLIntf,
 
-  LR_Const;
+  {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 type
 

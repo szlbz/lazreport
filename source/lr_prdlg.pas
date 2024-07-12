@@ -65,7 +65,9 @@ implementation
 
 {$R *.lfm}
 
-uses LR_Const, LR_Prntr,Printers;
+uses
+  {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif},
+  LR_Prntr,Printers;
 
 procedure TfrPrintForm.FormCreate(Sender: TObject);
 begin

@@ -1,15 +1,15 @@
 object frDesignerForm: TfrDesignerForm
   Left = -11
-  Height = 905
+  Height = 961
   Top = -11
-  Width = 1174
+  Width = 1196
   HorzScrollBar.Page = 694
   HorzScrollBar.Range = 304
   VertScrollBar.Page = 413
   VertScrollBar.Range = 149
   Caption = 'Designer'
-  ClientHeight = 901
-  ClientWidth = 1174
+  ClientHeight = 957
+  ClientWidth = 1196
   DesignTimePPI = 144
   KeyPreview = True
   Menu = MainMenu1
@@ -27,8 +27,8 @@ object frDesignerForm: TfrDesignerForm
   object StatusBar1: TStatusBar
     Left = 0
     Height = 34
-    Top = 867
-    Width = 1174
+    Top = 923
+    Width = 1196
     Panels = <    
       item
         Width = 112
@@ -46,22 +46,22 @@ object frDesignerForm: TfrDesignerForm
   end
   object frDock2: TPanel
     Left = 0
-    Height = 732
+    Height = 788
     Top = 135
     Width = 40
     Align = alLeft
     BevelOuter = bvNone
-    ClientHeight = 732
+    ClientHeight = 788
     ClientWidth = 40
     FullRepaint = False
     TabOrder = 0
     object panForDlg: TPanel
       Left = 0
-      Height = 732
+      Height = 788
       Top = 0
       Width = 40
       Align = alClient
-      ClientHeight = 732
+      ClientHeight = 788
       ClientWidth = 40
       FullRepaint = False
       TabOrder = 1
@@ -127,11 +127,11 @@ object frDesignerForm: TfrDesignerForm
     end
     object Panel4: TPanel
       Left = 0
-      Height = 732
+      Height = 788
       Top = 0
       Width = 40
       Align = alClient
-      ClientHeight = 732
+      ClientHeight = 788
       ClientWidth = 40
       FullRepaint = False
       TabOrder = 0
@@ -430,9 +430,9 @@ object frDesignerForm: TfrDesignerForm
   end
   object Tab1: TTabControl
     Left = 40
-    Height = 732
+    Height = 788
     Top = 135
-    Width = 1094
+    Width = 1116
     TabStop = False
     OnChange = Tab1Change
     TabIndex = 0
@@ -444,25 +444,25 @@ object frDesignerForm: TfrDesignerForm
     TabOrder = 1
     object panTab: TPanel
       Left = 2
-      Height = 698
+      Height = 754
       Top = 32
-      Width = 1090
+      Width = 1112
       Align = alClient
       BevelOuter = bvNone
       Caption = 'panTab'
-      ClientHeight = 698
-      ClientWidth = 1090
+      ClientHeight = 754
+      ClientWidth = 1112
       TabOrder = 1
       object ScrollBox1: TScrollBox
         Left = 0
-        Height = 698
+        Height = 754
         Top = 0
-        Width = 1090
+        Width = 1112
         HorzScrollBar.Page = 684
         VertScrollBar.Page = 261
         Align = alClient
-        ClientHeight = 694
-        ClientWidth = 1086
+        ClientHeight = 750
+        ClientWidth = 1108
         Color = clGray
         ParentBackground = False
         ParentColor = False
@@ -1740,14 +1740,14 @@ object frDesignerForm: TfrDesignerForm
     end
   end
   object frDock4: TPanel
-    Left = 1134
-    Height = 732
+    Left = 1156
+    Height = 788
     Top = 135
     Width = 40
     Align = alRight
     Anchors = [akTop, akRight]
     BevelOuter = bvNone
-    ClientHeight = 732
+    ClientHeight = 788
     ClientWidth = 40
     FullRepaint = False
     TabOrder = 2
@@ -2346,7 +2346,7 @@ object frDesignerForm: TfrDesignerForm
     Left = 0
     Height = 135
     Top = 0
-    Width = 1174
+    Width = 1196
     Align = alTop
     AutoSize = True
     BevelOuter = bvNone

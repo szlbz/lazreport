@@ -1,22 +1,24 @@
 object frDocOptForm: TfrDocOptForm
   Left = 594
-  Height = 507
+  Height = 760
   Top = 119
-  Width = 476
+  Width = 714
   ActiveControl = PageControl1
   BorderIcons = [biSystemMenu, biHelp]
   Caption = 'Report options'
-  ClientHeight = 507
-  ClientWidth = 476
+  ClientHeight = 760
+  ClientWidth = 714
+  DesignTimePPI = 144
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.1'
+  LCLVersion = '3.0.0.3'
   object ButtonPanel1: TButtonPanel
     Left = 6
     Height = 42
     Top = 459
     Width = 464
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'
@@ -36,7 +38,7 @@ object frDocOptForm: TfrDocOptForm
     Width = 464
     ActivePage = TabSheet1
     Align = alClient
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     TabIndex = 0
     TabOrder = 1
     object TabSheet1: TTabSheet
@@ -46,11 +48,11 @@ object frDocOptForm: TfrDocOptForm
       object labPrinter: TLabel
         AnchorSideLeft.Control = TabSheet1
         AnchorSideTop.Control = TabSheet1
-        Left = 6
+        Left = 9
         Height = 16
-        Top = 6
+        Top = 9
         Width = 39
-        BorderSpacing.Around = 6
+        BorderSpacing.Around = 9
         Caption = 'Printer'
         ParentColor = False
       end
@@ -60,29 +62,29 @@ object frDocOptForm: TfrDocOptForm
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 12
-        Height = 224
-        Top = 28
+        Left = 18
+        Height = 336
+        Top = 42
         Width = 440
         Anchors = [akTop, akLeft, akRight]
-        BorderSpacing.Around = 6
+        BorderSpacing.Around = 9
         ItemHeight = 0
-        OnDrawItem = ListBox1DrawItem
         ScrollWidth = 438
         Style = lbOwnerDrawFixed
         TabOrder = 0
         TopIndex = -1
+        OnDrawItem = ListBox1DrawItem
       end
       object CB1: TCheckBox
         AnchorSideLeft.Control = TabSheet1
         AnchorSideTop.Control = ListBox1
         AnchorSideTop.Side = asrBottom
-        Left = 6
+        Left = 9
         Height = 22
-        Top = 258
+        Top = 387
         Width = 186
         HelpContext = 77
-        BorderSpacing.Around = 6
+        BorderSpacing.Around = 9
         Caption = '&Select when report loaded'
         TabOrder = 1
       end
@@ -90,12 +92,12 @@ object frDocOptForm: TfrDocOptForm
         AnchorSideLeft.Control = Label3
         AnchorSideTop.Control = ListBox1
         AnchorSideTop.Side = asrBottom
-        Left = 235
+        Left = 352
         Height = 22
-        Top = 258
+        Top = 387
         Width = 123
         HelpContext = 86
-        BorderSpacing.Around = 6
+        BorderSpacing.Around = 9
         Caption = '&Two-pass report'
         TabOrder = 2
       end
@@ -103,11 +105,11 @@ object frDocOptForm: TfrDocOptForm
         AnchorSideLeft.Control = TabSheet1
         AnchorSideTop.Control = CB1
         AnchorSideTop.Side = asrBottom
-        Left = 6
+        Left = 9
         Height = 16
-        Top = 286
+        Top = 429
         Width = 114
-        BorderSpacing.Around = 6
+        BorderSpacing.Around = 9
         Caption = 'Report create date'
         FocusControl = edtRepCreateDate
         ParentColor = False
@@ -116,11 +118,11 @@ object frDocOptForm: TfrDocOptForm
         AnchorSideLeft.Control = Label3
         AnchorSideTop.Control = CB2
         AnchorSideTop.Side = asrBottom
-        Left = 235
+        Left = 352
         Height = 16
-        Top = 286
+        Top = 429
         Width = 141
-        BorderSpacing.Around = 6
+        BorderSpacing.Around = 9
         Caption = 'Report last modify date'
         FocusControl = edtRepLastChangeDate
         ParentColor = False
@@ -131,12 +133,12 @@ object frDocOptForm: TfrDocOptForm
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = Label3
         AnchorSideRight.Side = asrBottom
-        Left = 12
+        Left = 18
         Height = 25
-        Top = 308
+        Top = 462
         Width = 212
         Anchors = [akTop, akLeft, akRight]
-        BorderSpacing.Around = 6
+        BorderSpacing.Around = 9
         Color = clMoneyGreen
         ReadOnly = True
         TabOrder = 3
@@ -148,12 +150,12 @@ object frDocOptForm: TfrDocOptForm
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 241
+        Left = 362
         Height = 25
-        Top = 308
+        Top = 462
         Width = 211
         Anchors = [akTop, akLeft, akRight]
-        BorderSpacing.Around = 6
+        BorderSpacing.Around = 9
         Color = clMoneyGreen
         ReadOnly = True
         TabOrder = 4
@@ -163,7 +165,7 @@ object frDocOptForm: TfrDocOptForm
         AnchorSideLeft.Control = TabSheet1
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = TabSheet1
-        Left = 229
+        Left = 344
         Height = 1
         Top = 0
         Width = 1
@@ -198,11 +200,11 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideLeft.Control = edtMaj
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = labMaj
-          Left = 98
+          Left = 147
           Height = 16
           Top = 0
           Width = 52
-          BorderSpacing.Left = 12
+          BorderSpacing.Left = 18
           Caption = 'labMinor'
           ParentColor = False
         end
@@ -210,11 +212,11 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideLeft.Control = edtMinor
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = labMaj
-          Left = 196
+          Left = 294
           Height = 16
           Top = 0
           Width = 66
-          BorderSpacing.Left = 12
+          BorderSpacing.Left = 18
           Caption = 'labRelease'
           ParentColor = False
         end
@@ -222,11 +224,11 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideLeft.Control = edtRelease
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = labMaj
-          Left = 294
+          Left = 441
           Height = 16
           Top = 0
           Width = 48
-          BorderSpacing.Left = 12
+          BorderSpacing.Left = 18
           Caption = 'labBuild'
           ParentColor = False
         end
@@ -234,12 +236,12 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideLeft.Control = labMaj
           AnchorSideTop.Control = labMaj
           AnchorSideTop.Side = asrBottom
-          Left = 6
+          Left = 9
           Height = 25
-          Top = 22
-          Width = 80
-          BorderSpacing.Bottom = 6
-          BorderSpacing.Around = 6
+          Top = 33
+          Width = 120
+          BorderSpacing.Bottom = 9
+          BorderSpacing.Around = 9
           TabOrder = 0
           Text = 'edtMaj'
         end
@@ -247,12 +249,12 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideLeft.Control = labMinor
           AnchorSideTop.Control = labMinor
           AnchorSideTop.Side = asrBottom
-          Left = 104
+          Left = 156
           Height = 25
-          Top = 22
-          Width = 80
-          BorderSpacing.Bottom = 6
-          BorderSpacing.Around = 6
+          Top = 33
+          Width = 120
+          BorderSpacing.Bottom = 9
+          BorderSpacing.Around = 9
           TabOrder = 1
           Text = 'edtMinor'
         end
@@ -260,12 +262,12 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideLeft.Control = labRelease
           AnchorSideTop.Control = labRelease
           AnchorSideTop.Side = asrBottom
-          Left = 202
+          Left = 303
           Height = 25
-          Top = 22
-          Width = 80
-          BorderSpacing.Bottom = 6
-          BorderSpacing.Around = 6
+          Top = 33
+          Width = 120
+          BorderSpacing.Bottom = 9
+          BorderSpacing.Around = 9
           TabOrder = 2
           Text = 'edtRelease'
         end
@@ -273,12 +275,12 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideLeft.Control = labBuild
           AnchorSideTop.Control = labBuild
           AnchorSideTop.Side = asrBottom
-          Left = 300
+          Left = 450
           Height = 25
-          Top = 22
-          Width = 80
-          BorderSpacing.Bottom = 6
-          BorderSpacing.Around = 6
+          Top = 33
+          Width = 120
+          BorderSpacing.Bottom = 9
+          BorderSpacing.Around = 9
           TabOrder = 3
           Text = 'edtBuild'
         end
@@ -300,9 +302,9 @@ object frDocOptForm: TfrDocOptForm
         TabOrder = 1
         object labTitle: TLabel
           AnchorSideTop.Side = asrBottom
-          Left = 6
+          Left = 9
           Height = 16
-          Top = 6
+          Top = 9
           Width = 26
           Caption = 'Title'
           ParentColor = False
@@ -311,9 +313,9 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideLeft.Control = labTitle
           AnchorSideTop.Control = edAutor
           AnchorSideTop.Side = asrBottom
-          Left = 6
+          Left = 9
           Height = 16
-          Top = 112
+          Top = 168
           Width = 46
           Caption = 'Subject'
           ParentColor = False
@@ -322,9 +324,9 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideLeft.Control = labTitle
           AnchorSideTop.Control = edSubject
           AnchorSideTop.Side = asrBottom
-          Left = 6
+          Left = 9
           Height = 16
-          Top = 165
+          Top = 248
           Width = 70
           Caption = 'Keys works'
           ParentColor = False
@@ -333,9 +335,9 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideLeft.Control = labTitle
           AnchorSideTop.Control = edKeyWords
           AnchorSideTop.Side = asrBottom
-          Left = 6
+          Left = 9
           Height = 16
-          Top = 218
+          Top = 327
           Width = 66
           Caption = 'Comments'
           ParentColor = False
@@ -344,9 +346,9 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideLeft.Control = labTitle
           AnchorSideTop.Control = edTitle
           AnchorSideTop.Side = asrBottom
-          Left = 6
+          Left = 9
           Height = 16
-          Top = 59
+          Top = 88
           Width = 51
           Caption = 'labAutor'
           ParentColor = False
@@ -357,12 +359,12 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = GroupBox2
           AnchorSideRight.Side = asrBottom
-          Left = 12
+          Left = 18
           Height = 25
-          Top = 28
+          Top = 42
           Width = 436
           Anchors = [akTop, akLeft, akRight]
-          BorderSpacing.Around = 6
+          BorderSpacing.Around = 9
           TabOrder = 0
           Text = 'edTitle'
         end
@@ -371,12 +373,12 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = GroupBox2
           AnchorSideRight.Side = asrBottom
-          Left = 12
+          Left = 18
           Height = 25
-          Top = 134
+          Top = 201
           Width = 436
           Anchors = [akTop, akLeft, akRight]
-          BorderSpacing.Around = 6
+          BorderSpacing.Around = 9
           TabOrder = 2
           Text = 'Edit1'
         end
@@ -386,12 +388,12 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = GroupBox2
           AnchorSideRight.Side = asrBottom
-          Left = 12
+          Left = 18
           Height = 25
-          Top = 187
+          Top = 280
           Width = 436
           Anchors = [akTop, akLeft, akRight]
-          BorderSpacing.Around = 6
+          BorderSpacing.Around = 9
           TabOrder = 3
           Text = 'Edit1'
         end
@@ -403,12 +405,12 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideRight.Side = asrBottom
           AnchorSideBottom.Control = GroupBox2
           AnchorSideBottom.Side = asrBottom
-          Left = 6
+          Left = 9
           Height = 75
-          Top = 240
+          Top = 360
           Width = 442
           Anchors = [akTop, akLeft, akRight, akBottom]
-          BorderSpacing.Around = 6
+          BorderSpacing.Around = 9
           Lines.Strings = (
             'Memo1'
           )
@@ -421,12 +423,12 @@ object frDocOptForm: TfrDocOptForm
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = GroupBox2
           AnchorSideRight.Side = asrBottom
-          Left = 12
+          Left = 18
           Height = 25
-          Top = 81
+          Top = 122
           Width = 436
           Anchors = [akTop, akLeft, akRight]
-          BorderSpacing.Around = 6
+          BorderSpacing.Around = 9
           TabOrder = 1
           Text = 'Edit1'
         end
@@ -434,42 +436,29 @@ object frDocOptForm: TfrDocOptForm
     end
   end
   object ImageList1: TImageList
-    left = 384
-    top = 304
+    Left = 576
+    Top = 456
     Bitmap = {
-      4C6901000000100000001000000000000000000000000000000000000009B3B3
-      B3CFDFDFDFF0DDDDDDF0DDDDDDF0EBEBEBF0E6E6E6F0DDDDDDF03535355F0000
-      00000000000000000000000000000000000000000000000000000000000ACECE
-      CEE1FFFFFFFFFFFFFFFFFFFFFFFFF9F9F9FFF3F3F3FFE7E7E7FF3838386C0000
-      00000000000000000000000000000000000000000000000000000000000ACDCD
-      CDDDFFFFFFFFFEFEFEFFF6F6F6FFEEEEEEFFE8E8E8FFDEDEDEFF3939396A0000
-      000000000000000000000000000000000000000000000000000000000005D1D1
-      D1DCFFFFFFFFF8F8F8FFF0F0F0FFE8E8E8FFE2E2E2FFD9D9D9FF353535650000
-      00000000000000000000000000000000000000000000000000002A2A2A1EC7C7
-      C7E3EEEEEEFFE0E0E0FFD8D8D8FFD1D1D1FFCBCBCBFFC1C1C1FF515151830000
-      0007000000000000000000000000000000000000000000000000A3A3A3C6C0C0
-      C0FEC3C3C3FFC0C0C0FFB9B9B9FFB2B2B2FFABABABFFA0A0A0FFACACACFB5151
-      517A000000000000000000000000000000006B666B32938D9387F2F2F2FFFFFF
-      FFFFFFFFFFFFFFFFFFFFFCFCFCFFF7F7F7FFF1F1F1FFEBEBEBFFECECECFFB1B1
-      B1E1535353650B0B0B16000000003B383B4DBED9BEF7C7EDC7FFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFAFAFAFD500000014928D92ABDAF7DAFFB9E5B9FFFCFBFCFFFAFA
-      FAFFFAFAFAFFFAFAFAFFFAFAFAFFFAFAFAFFFAFAFAFFFBFBFBFFFBFBFBFFFBFB
-      FBFFFFFFFFFFFAFAFAFF35353560B7B9B7DBF5F1F5FFF5F0F5FFEEEFEEFFEFEF
-      EFFFF0F0F0FFF0F0F0FFF0F0F0FFF0F0F0FFF0F0F0FFEFEFEFFFEFEFEFFFEFEF
-      EFFFEDEDEDFFF2F2F2FF62626296BDBDBDE7D7D7D7FFDBDBDBFFDFDFDFFFE1E1
-      E1FFE2E2E2FFE3E3E3FFE3E3E3FFE3E3E3FFE3E3E3FFE2E2E2FFE0E0E0FFDFDF
-      DFFFD8D8D8FFDFDFDFFF6A6A6AA5A3A3A3D7CFCFCFFFA3A3A3FF8E8E8EFF8484
-      84FF848484FF848484FF848484FF848484FF848484FF858585FF878787FF8F8F
-      8FFFB6B6B6FFD4D4D4FF555555986D6D6DA3D0D0D0FF454545FF070707FF5C5C
-      5CFF636363FF626262FF626262FF606060FF5E5E5EFF5D5D5DFF464646FF0202
-      02FF828282FFC8C8C8FF2A2A2A651B1B1B38808080D0878787FB989898FEFBFB
-      FBFFFFFFFFFFFFFFFFFFFDFDFDFFF5F5F5FFEDEDEDFFE7E7E7FFCFCFCFFF8181
-      81FF8C8C8CF55F5F5FBA00000018000000000000000D1F1F1F4ADBDBDBF7FFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFCFFF3F3F3FFEBEBEBFFEBEBEBFF8181
-      81CB0A0A0A3200000006000000000000000000000000000000106A6A6A9C7171
-      71A46F6F6FA46E6E6EA46B6B6BA4666666A4636363A4616161A4626262A53D3D
-      3D7C000000000000000000000000
+      4C7A010000001000000010000000620200000000000078DA95935D489A5118C7
+      43D864C66017630C8475EF651028D1A55D0C7611D15DA62979A12BE976EC225D
+      E24D25140C2FBA107CBB5290120C0786124C414A05879AF32B590A7E27AF567E
+      FC77CECB1A25ADD8037FCECBE1FC9E739EFFF3BC2323F7E285CBE50A67B3D946
+      3A9DE6542E971B171717DCF7C4C4847CE4F1109C9E9EE67127AEAFAFD16AB550
+      2C1621168B3F3EC59F9C9CA42937180CD06EB751ABD5502A9590C96420914834
+      4FF0CFA2D1E84FCA5F5D5DA1D16870ECF9F93992C924C8FB971E834522D1BB40
+      2050A077E67239241209907C088542F0FBFD989999F9428EF1FFC5DB6CB6EF3E
+      9F6F707C7C0CB2C2E3F1E0E0E00076BB1D56AB150E87A34B727C1AE6B46AEDF8
+      CEE68EE9F2F2F2AE75E8F57AE8743A68369B207D40A552C1FEFE7E7E76767669
+      7474F40D6527C5931F8E92479D403580FF09A7D3F983E0AFB737B7ED679D3378
+      7E79D0EBF6707373F3A0BADDEE5FD1A07BC44FC5A1E730C53659B00D16B57A0D
+      F57A9DF37D5874FF56D56A15B456A552F9D5EBF516E3F13852A914C8DC219FCF
+      73FD2A140AF744F7684FE819DA17BA6A349A3DE2793C1C0E83ACD8DADAC2FAFA
+      FA83321A8D30994C309BCD70BBDD88C562989B9BB32C2F2FDB229108A45229F8
+      7C3EE6E7E7A152A9E8DB3829140A2C2C2C402693617A7A1A3C1E0F068301C160
+      10645E968442A1786D6D2D4272772D16CBE0D61F1AFD7E1F2CCB72F5D2F9A7EF
+      D4EBF5D8D8D860E572F937E2FFDB3F23F0726C6CEC3DF1A033DC273A03F4FFA1
+      FDA7227C4820108C13E6F9D018BD227EECAEAEAE323A9D8E59595961B45A2DA3
+      56AB19520FB3B8B8C8907AF6A6A6A63EDF857E032A306181
     }
   end
 end

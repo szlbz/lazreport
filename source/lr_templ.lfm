@@ -1,27 +1,28 @@
 object frTemplNewForm: TfrTemplNewForm
   Left = 550
-  Height = 353
+  Height = 530
   Top = 171
-  Width = 400
+  Width = 600
   HorzScrollBar.Page = 218
   VertScrollBar.Page = 291
   ActiveControl = Memo1
   BorderStyle = bsDialog
   Caption = 'New template'
-  ClientHeight = 353
-  ClientWidth = 400
+  ClientHeight = 530
+  ClientWidth = 600
+  DesignTimePPI = 144
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '0.9.29'
+  LCLVersion = '3.0.0.3'
   object Label1: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
-    Left = 6
+    Left = 9
     Height = 16
-    Top = 6
+    Top = 9
     Width = 73
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Description'
     FocusControl = Memo1
     ParentColor = False
@@ -31,13 +32,13 @@ object frTemplNewForm: TfrTemplNewForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = ButtonPanel1
-    Left = 6
+    Left = 9
     Height = 117
     Top = 186
     Width = 388
     Anchors = [akLeft, akRight, akBottom]
     AutoSize = True
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     Caption = 'Image'
     ClientHeight = 101
     ClientWidth = 386
@@ -45,15 +46,15 @@ object frTemplNewForm: TfrTemplNewForm
     object Panel1: TPanel
       AnchorSideLeft.Control = GroupBox2
       AnchorSideTop.Control = GroupBox2
-      Left = 6
-      Height = 89
-      Top = 6
-      Width = 88
+      Left = 9
+      Height = 134
+      Top = 9
+      Width = 132
       HelpContext = 83
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       BevelOuter = bvLowered
-      ClientHeight = 89
-      ClientWidth = 88
+      ClientHeight = 134
+      ClientWidth = 132
       FullRepaint = False
       TabOrder = 0
       object Image1: TImage
@@ -69,16 +70,16 @@ object frTemplNewForm: TfrTemplNewForm
       AnchorSideLeft.Control = Panel1
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = GroupBox2
-      Left = 100
+      Left = 150
       Height = 29
-      Top = 6
+      Top = 9
       Width = 57
       HelpContext = 64
       AutoSize = True
-      BorderSpacing.Around = 6
+      BorderSpacing.Around = 9
       Caption = 'Load...'
-      OnClick = Button1Click
       TabOrder = 1
+      OnClick = Button1Click
     end
   end
   object Memo1: TMemo
@@ -88,13 +89,13 @@ object frTemplNewForm: TfrTemplNewForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = GroupBox2
-    Left = 6
+    Left = 9
     Height = 152
-    Top = 28
+    Top = 42
     Width = 388
     HelpContext = 73
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Around = 6
+    BorderSpacing.Around = 9
     TabOrder = 1
   end
   object ButtonPanel1: TButtonPanel
@@ -102,17 +103,22 @@ object frTemplNewForm: TfrTemplNewForm
     Height = 38
     Top = 309
     Width = 388
+    BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
     CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
     CloseButton.Enabled = False
     CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
     TabOrder = 2
     ShowButtons = [pbOK, pbCancel, pbHelp]
   end
   object OpenDialog1: TOpenDialog
     FilterIndex = 0
-    left = 144
-    top = 248
+    Left = 216
+    Top = 372
   end
 end

@@ -757,7 +757,7 @@ implementation
 {$R fr_pencil.res}
 
 uses
-  LR_Pgopt, LR_GEdit, LR_Templ, LR_Newrp, LR_DsOpt, LR_Const, LR_Pars,
+  LR_Pgopt, LR_GEdit, LR_Templ, LR_Newrp, LR_DsOpt, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, LR_Pars,
   LR_Prntr, LR_Hilit, LR_Flds, LR_Dopt, LR_Ev_ed, LR_BndEd, LR_VBnd,
   LR_BTyp, LR_Utils, LR_GrpEd, LR_About, LR_IFlds, LR_DBRel,LR_DBSet,
   DB, lr_design_ins_filed, IniFiles, LR_DSet, math;
@@ -3844,6 +3844,10 @@ begin
   GB2.Hint :=         sFRDesignerFormGridAlign;
   GB3.Hint :=         sFRDesignerFormFitGrid;
   btnGuides.Hint :=   sFRDesignerFormGuides;//'显示辅助线';//2022.5.20 LBZ
+  SpeedButton1.hint:= SVerticalequaldistributiontable;//lbz
+  SpeedButton2.hint:= ShorizontalEqualdistributiontable;//LBZ
+  SpeedButton3.hint:= SSplitCell;//LBZ
+  SpeedButton4.hint:= SMergecell;//LBZ
   HelpBtn.Hint :=     sPreviewFormHelp;
   ExitB.Caption :=    sFRDesignerFormClose;
   ExitB.Hint :=       sFRDesignerFormCloseDesigner;

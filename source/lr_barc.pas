@@ -165,7 +165,7 @@ type
 
 implementation
 
-uses LR_Var, LR_Flds, LR_Const, LR_Utils;
+uses LR_Var, LR_Flds, {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif}, LR_Utils;
 
 {$IFNDEF LCLNOGUI}
 {$R *.lfm}

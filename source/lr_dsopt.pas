@@ -18,7 +18,7 @@ uses
   Classes, SysUtils, LResources,
   Forms, Controls, Graphics, Dialogs,
   Buttons, StdCtrls,ComCtrls, ButtonPanel, Spin,
-  LR_Const;
+  {$ifdef Chinese}lr_const_CN{$else}lr_const{$endif};
 
 type
 
