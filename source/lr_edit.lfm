@@ -17,33 +17,31 @@ object frEditorForm: TfrEditorForm
   OnShow = FormShow
   Position = poScreenCenter
   ShowHint = True
-  LCLVersion = '3.0.0.3'
   object Panel2: TPanel
     Left = 0
-    Height = 52
-    Top = 384
-    Width = 589
+    Height = 64
+    Top = 590
+    Width = 884
     Align = alBottom
     AutoSize = True
     BevelOuter = bvNone
-    ClientHeight = 52
-    ClientWidth = 589
+    ClientHeight = 64
+    ClientWidth = 884
     FullRepaint = False
     TabOrder = 0
     object Button1: TButton
       AnchorSideTop.Control = Panel2
       AnchorSideRight.Control = Button2
-      Left = 475
-      Height = 40
-      Top = 0
-      Width = 38
+      Left = 708
+      Height = 46
+      Top = 6
+      Width = 63
       HelpContext = 40
       Anchors = [akRight, akBottom]
       AutoSize = True
       BorderSpacing.Around = 9
       BorderSpacing.InnerBorder = 6
       Caption = 'Ok'
-      Default = True
       ModalResult = 1
       TabOrder = 0
     end
@@ -51,16 +49,15 @@ object frEditorForm: TfrEditorForm
       AnchorSideTop.Control = Panel2
       AnchorSideRight.Control = Panel2
       AnchorSideRight.Side = asrBottom
-      Left = 519
-      Height = 40
-      Top = 0
-      Width = 64
+      Left = 780
+      Height = 46
+      Top = 6
+      Width = 95
       HelpContext = 50
       Anchors = [akRight, akBottom]
       AutoSize = True
       BorderSpacing.Around = 9
       BorderSpacing.InnerBorder = 6
-      Cancel = True
       Caption = 'Cancel'
       ModalResult = 2
       TabOrder = 1
@@ -69,9 +66,9 @@ object frEditorForm: TfrEditorForm
       AnchorSideLeft.Control = Panel2
       AnchorSideTop.Control = Panel2
       Left = 9
-      Height = 40
-      Top = 0
-      Width = 71
+      Height = 46
+      Top = 6
+      Width = 109
       HelpContext = 60
       Anchors = [akLeft, akBottom]
       AutoSize = True
@@ -85,10 +82,10 @@ object frEditorForm: TfrEditorForm
       AnchorSideLeft.Control = Button3
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel2
-      Left = 124
-      Height = 40
-      Top = 0
-      Width = 71
+      Left = 127
+      Height = 46
+      Top = 6
+      Width = 106
       HelpContext = 70
       Anchors = [akLeft, akBottom]
       AutoSize = True
@@ -102,10 +99,10 @@ object frEditorForm: TfrEditorForm
       AnchorSideLeft.Control = Button6
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel2
-      Left = 363
-      Height = 40
-      Top = 0
-      Width = 66
+      Left = 364
+      Height = 46
+      Top = 6
+      Width = 100
       HelpContext = 110
       Anchors = [akLeft, akBottom]
       AutoSize = True
@@ -119,10 +116,10 @@ object frEditorForm: TfrEditorForm
       AnchorSideLeft.Control = Button4
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel2
-      Left = 240
-      Height = 40
-      Top = 0
-      Width = 76
+      Left = 242
+      Height = 46
+      Top = 6
+      Width = 113
       HelpContext = 70
       Anchors = [akLeft, akBottom]
       AutoSize = True
@@ -136,27 +133,27 @@ object frEditorForm: TfrEditorForm
   object ScriptPanel: TPanel
     Left = 0
     Height = 228
-    Top = 156
-    Width = 589
+    Top = 362
+    Width = 884
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 228
-    ClientWidth = 589
+    ClientWidth = 884
     FullRepaint = False
     TabOrder = 1
     object Label2: TLabel
       Left = 6
-      Height = 20
-      Top = 0
-      Width = 38
+      Height = 24
+      Top = 4
+      Width = 50
       Caption = 'S&cript'
       ParentColor = False
     end
     inline M2: TSynEdit
       Left = 0
-      Height = 136
-      Top = 16
-      Width = 589
+      Height = 196
+      Top = 32
+      Width = 884
       Align = alBottom
       Anchors = [akTop, akLeft, akRight, akBottom]
       Font.Height = -21
@@ -691,16 +688,33 @@ object frEditorForm: TfrEditorForm
         end
       end
     end
+    object Button7: TButton
+      AnchorSideLeft.Control = Label2
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = ScriptPanel
+      AnchorSideBottom.Control = M2
+      Left = 66
+      Height = 28
+      Top = 2
+      Width = 113
+      Anchors = [akTop, akLeft, akBottom]
+      BorderSpacing.Left = 10
+      BorderSpacing.Top = 2
+      BorderSpacing.Bottom = 2
+      Caption = '清空脚本'
+      TabOrder = 1
+      OnClick = Button7Click
+    end
   end
   object MemoPanel: TPanel
     Left = 0
-    Height = 185
-    Top = 38
-    Width = 589
+    Height = 300
+    Top = 48
+    Width = 884
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 185
-    ClientWidth = 589
+    ClientHeight = 300
+    ClientWidth = 884
     FullRepaint = False
     TabOrder = 2
     object M1: TMemo
@@ -712,9 +726,9 @@ object frEditorForm: TfrEditorForm
       AnchorSideBottom.Control = MemoPanel
       AnchorSideBottom.Side = asrBottom
       Left = 0
-      Height = 153
-      Top = 48
-      Width = 589
+      Height = 258
+      Top = 42
+      Width = 884
       Anchors = [akTop, akLeft, akRight, akBottom]
       ScrollBars = ssAutoBoth
       TabOrder = 0
@@ -726,9 +740,9 @@ object frEditorForm: TfrEditorForm
       AnchorSideLeft.Control = MemoPanel
       AnchorSideTop.Control = MemoPanel
       Left = 9
-      Height = 20
+      Height = 24
       Top = 9
-      Width = 40
+      Width = 56
       BorderSpacing.Around = 9
       Caption = '&Memo'
       ParentColor = False
@@ -738,8 +752,8 @@ object frEditorForm: TfrEditorForm
     Cursor = crVSplit
     Left = 0
     Height = 14
-    Top = 218
-    Width = 589
+    Top = 348
+    Width = 884
     Align = alBottom
     Anchors = [akLeft, akBottom]
     Beveled = True
@@ -751,23 +765,23 @@ object frEditorForm: TfrEditorForm
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     Left = 0
-    Height = 38
+    Height = 48
     Top = 0
-    Width = 589
+    Width = 884
     Align = alTop
     AutoSize = True
     BevelOuter = bvLowered
-    ClientHeight = 38
-    ClientWidth = 589
+    ClientHeight = 48
+    ClientWidth = 884
     FullRepaint = False
     TabOrder = 4
     object CB1: TCheckBox
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel3
       Left = 10
-      Height = 24
+      Height = 28
       Top = 10
-      Width = 62
+      Width = 75
       HelpContext = 80
       BorderSpacing.Around = 9
       Caption = '&Script'
@@ -778,10 +792,10 @@ object frEditorForm: TfrEditorForm
       AnchorSideLeft.Control = CB1
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel3
-      Left = 112
-      Height = 24
+      Left = 94
+      Height = 28
       Top = 10
-      Width = 75
+      Width = 93
       HelpContext = 90
       BorderSpacing.Around = 9
       Caption = '&Big font'
@@ -792,10 +806,10 @@ object frEditorForm: TfrEditorForm
       AnchorSideLeft.Control = CB2
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel3
-      Left = 234
-      Height = 24
+      Left = 196
+      Height = 28
       Top = 10
-      Width = 95
+      Width = 121
       HelpContext = 100
       BorderSpacing.Around = 9
       Caption = '&Word wrap'

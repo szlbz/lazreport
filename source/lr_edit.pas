@@ -29,6 +29,7 @@ type
 
   TfrEditorForm = class(TPropEditor)
     Button6: TButton;
+    Button7: TButton;
     CB1: TCheckBox;
     CB2: TCheckBox;
     CB3: TCheckBox;
@@ -49,6 +50,7 @@ type
     SynPasSyn1: TSynPasSyn;
     procedure Button3Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure M1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -101,9 +103,10 @@ begin
       M1.SelStart:=0;
     M1.SetFocus;
     FActiveMemo := M1;
-    CB1.Checked:=(View.Script.Count>0) or (View is TfrControl);
+    CB1.Checked:=true;//(View.Script.Count>0) or (View is TfrControl);//2022.10.24 LBZ
     M2.Lines.Text:=View.Script.Text;
     Button5.Visible := (View is TfrMemoView);
+    M1.SetFocus; //2024.07.12 LBZ
   end
   else
   begin
@@ -117,7 +120,6 @@ begin
 
   if edtScriptFontSize > 0 then
     M2.Font.Size:=edtScriptFontSize;
-
   {$IFDEF DebugLR}
   DebugLn('TfrEditorForm.FormShow END');
   {$ENDIF}
@@ -146,6 +148,11 @@ begin
   finally
     lrExpresionEditorForm.Free;
   end;
+end;
+
+procedure TfrEditorForm.Button7Click(Sender: TObject);
+begin
+  m2.Clear;
 end;
 
 procedure TfrEditorForm.FormCloseQuery(Sender: TObject; var CanClose: boolean);
@@ -222,12 +229,11 @@ end;
 
 procedure TfrEditorForm.CB2Click(Sender: TObject);
 begin
-{  if CB2.Checked then
+  if CB2.Checked then
     M1.Font.Size := 12
   else
     M1.Font.Size := 10;
   M2.Font.Size := M1.Font.Size;
-}
 end;
 
 procedure TfrEditorForm.CB3Click(Sender: TObject);
@@ -249,7 +255,6 @@ begin
   Button6.Caption := sEditorFormFunction;
   Button1.Caption := sOk;
   Button2.Caption := sCancel;
-
 end;
 
 procedure TfrEditorForm.Button5Click(Sender: TObject);
