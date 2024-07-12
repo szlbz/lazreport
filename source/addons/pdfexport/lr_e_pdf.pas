@@ -29,7 +29,7 @@ interface
 uses
     SysUtils, Classes, Graphics, Forms, StdCtrls, lr_class, lr_BarC,
     lr_shape, PdfDoc, PdfTypes, PdfFonts, PRJpegImage, PReport, Dialogs,
-    Controls, lr_rrect;
+    Controls, lr_rrect,lazutf8;
 
 type
     TShapeData = record
@@ -73,6 +73,7 @@ type
         procedure ShowPicture(View: TfrPictureView; x, y, h, w: integer);
         procedure ShowRoundRect(View: TfrRoundRectView; x, y, h, w: integer);
         procedure ShowShape(View: TfrShapeView; x, y, h, w: integer);
+        procedure ShowMemoText(View: TfrView;X, Y, h, w: Integer); //2022.04.03 LBZ 增加显示文字
         procedure OnText(X, Y: Integer; const Text: string; View: TfrView);
             override;
         procedure OnData(x, y: Integer; View: TfrView); override;
@@ -476,6 +477,117 @@ begin
   AddShape(Data, x, y, h, w);
 end;
 
+//2022.04.03 LBZ 增加显示文字
+procedure TfrTNPDFExportFilter.ShowMemoText(View: TfrView;X, Y, h, w: Integer);
+var
+    PRTLabel: TPRLabel;
+    i,j,nx, ny, ndx, ndy,dx1,sw: Integer;
+    gapx, gapy: integer;
+    memo: TfrMemoView;
+    Text,ss,ss1:String;
+    ms:TStringList;
+begin
+  ms:=TStringList.Create;
+  if ((TfrMemoView(View as TfrMemoView).Flags and 2)<>0) and (TfrMemoView(View as TfrMemoView).Memo.Count<>0) then //flWordWrap=2   //自动换行
+  Begin
+     PPage.Canvas.Font.Size:=trunc(TfrMemoView(View as TfrMemoView).Font.Size*PDFEscx);
+     for j:=0 to TfrMemoView(View as TfrMemoView).Memo.Count-1 do
+     begin
+       //#02<sup></sup>  #03<sub></sub> #04取消上下标粗体斜体 #05粗体<b></b>  #06下划线<u></u>  #07斜体<i></i>
+       ss:=TfrMemoView(View as TfrMemoView).Memo[j];
+       ss:=Ss.Replace('<br>', '', [rfReplaceAll]);
+       ss:=Ss.Replace('<sup>', '', [rfReplaceAll]);
+       ss:=ss.Replace ('</sup>', '', [rfReplaceAll]);
+       ss:=ss.Replace ('<sub>', '', [rfReplaceAll]);
+       ss:=ss.Replace ('</sub>', '', [rfReplaceAll]);
+       ss:=ss.Replace ('<b>', '', [rfReplaceAll]);
+       ss:=ss.Replace ('</b>', '', [rfReplaceAll]);
+       ss:=ss.Replace ('<u>', '', [rfReplaceAll]);
+       ss:=ss.Replace ('</u>', '', [rfReplaceAll]);
+       ss:=ss.Replace ('<i>', '', [rfReplaceAll]);
+       ss:=ss.Replace ('</i>', '', [rfReplaceAll]);
+       i:=1;
+       ss1:='';
+       if PPage.Canvas.TextWidth(ss)*PDFEscx>trunc((View.dx)) then
+       begin
+         while i<=UTF8Length(ss) do
+         begin
+           if PPage.Canvas.TextWidth(ss1)*PDFEscx<=trunc((View.dx*PDFEscx)) then
+           Begin
+             ss1:=ss1+Utf8Copy(ss,i,1);
+           end
+           else
+           begin
+             ms.Add(ss1);
+             ss1:=Utf8Copy(ss,i,1);
+           end;
+           inc(i);
+         end;
+         if ss1<>'' then ms.Add(ss1);
+       end
+       else
+         ms.Add(ss);
+     end;
+  end
+  else ms.Assign(TfrMemoView(View as TfrMemoView).Memo);
+    gapx := View.gapx;
+    gapy := View.gapy;
+    j:=ms.Count;// TfrMemoView(View as TfrMemoView).Memo.Count;
+    nx := trunc((x+gapx) * PDFEscx);
+    if (View as TfrMemoView).Layout=tlTop then  //文字垂直对齐
+      ny := trunc((y + gapy)* PDFEscy);
+    if (View as TfrMemoView).Layout=tlCenter then //文字垂直对齐
+      ny := trunc((y +gapy + View.dy /2-((View as TfrMemoView).Font.Size/2*j)) * PDFEscy);
+    if (View as TfrMemoView).Layout=tlBottom then  //文字垂直对齐
+      ny := trunc((y +gapy + View.dy-((View as TfrMemoView).Font.Size/2*j)) * PDFEscy);
+
+    ndx := trunc((View.dx-gapx*2) * PDFEscx) ;
+    ndy := trunc((View.dy-gapy*2) * PDFEscy) ;
+
+
+//    j:=TfrMemoView(View as TfrMemoView).Memo.Count;
+    for i:=0 to j-1 do
+    begin
+      PRTLabel := TPRLabel.Create(PRPanel);
+      PRTLabel.Parent := PRPanel;
+      PRTLabel.Clipping := true;
+      Text:=ms[i];//(TfrMemoView(View as TfrMemoView).Memo[i]);
+      Text:=Text.Replace(' ',' ');
+      try
+        PRTLabel.Caption :=Text;
+        PRTLabel.Left := nx;
+        PRTLabel.Top := ny;
+        PRTLabel.Width := ndx;
+        PRTLabel.Height := ndy;
+        if View is TfrMemoView then
+        begin
+          memo := View as TfrMemoView;
+          PRTLabel.Alignment := memo.Alignment;  //文字水平对齐
+          if Pos('Arial', memo.Font.Name) > 0 then
+            PRTLabel.FontName := fnArial
+          else if Pos('Courier', memo.Font.Name) > 0 then
+            PRTLabel.FontName := fnFixedWidth
+          else if Pos('Times', memo.Font.Name) > 0 then
+            PRTLabel.FontName := fnTimesRoman
+          else
+            PRTLabel.FontName :=fnChinese;
+          PRTLabel.FontSize :=memo.Font.Size;
+          PRTLabel.FontBold := fsBold in memo.Font.Style;
+          PRTLabel.FontItalic := fsItalic in memo.Font.Style;
+          PRTLabel.FontColor := ColorToRGB(memo.Font.Color);
+          PRTLabel.FontUnderline := fsUnderline in memo.Font.Style;
+          PRTLabel.Angle:= memo.Angle;
+          PRTLabel.AlignJustified :=  memo.Justify and not memo.LastLine;
+          PRTLabel.CharSpace:=1;
+        end;
+      finally
+      end;
+      ny:=ny+abs(trunc((TfrMemoView(View as TfrMemoView).Font.Size+TfrMemoView(View as TfrMemoView).LineSpacing)));
+    end;
+    ms.Free;
+end;
+//2022.04.03 LBZ 增加显示文字
+
 procedure TfrTNPDFExportFilter.OnData(x, y: Integer; View: TfrView);
 var
     nx, ny, ndx, ndy: Integer;
@@ -494,6 +606,10 @@ begin
 
       ShowRoundRect(TfrRoundRectView(View), nx, ny, ndy, ndx);
 
+    end else
+    if View is TfrMemoView then begin //2022.04.03 LBZ 增加显示文字
+         ShowFrame(View, nx, ny, ndy, ndx); //2022.04.03 LBZ 增加显示文字
+         ShowMemoText(View, x, y, ndy, ndx); //2022.04.03 LBZ 增加显示文字
     end else
       DefaultShowView(View, nx, ny, ndy, ndx);
 end;
@@ -540,18 +656,20 @@ begin
         PRTLabel.FontUnderline := fsUnderline in memo.Font.Style;
         PRTLabel.Angle:= memo.Angle;
         PRTLabel.AlignJustified :=  memo.Justify and not memo.LastLine;
+{
         // suppose that URLInfo always contains a valid URI
         if Trim(memo.URLInfo) <> '' then begin
           // create link annotation
           PRTAnno := TPRAnnotation.Create(PRPanel);
           PRTAnno.Parent := PRPanel;
-          PRTAnno.SubType := asLink;
-          PRTAnno.Action.URI := memo.URLInfo;
+          //PRTAnno.SubType := asLink;
+          //PRTAnno.Action.URI := memo.URLInfo;
           PRTAnno.Left := PRTLabel.Left;
           PRTAnno.Top := PRTLabel.Top;
           PRTAnno.Width := PRTLabel.Width;
           PRTAnno.Height := PRTLabel.Height;
         end;
+}
       end;
     finally
     end;
