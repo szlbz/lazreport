@@ -1,19 +1,20 @@
 object BarCode2dForm: TBarCode2dForm
   Left = 290
-  Height = 374
+  Height = 561
   Top = 159
-  Width = 463
+  Width = 694
   BorderStyle = bsDialog
   Caption = 'BarCode editor'
-  ClientHeight = 374
-  ClientWidth = 463
+  ClientHeight = 561
+  ClientWidth = 694
+  DesignTimePPI = 144
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '3.0.0.3'
   object Image1: TImage
-    Left = 352
+    Left = 528
     Height = 16
-    Top = 8
+    Top = 12
     Width = 16
     AutoSize = True
     Picture.Data = {
@@ -30,46 +31,46 @@ object BarCode2dForm: TBarCode2dForm
     Visible = False
   end
   object cbType: TComboBox
-    Left = 16
+    Left = 24
     Height = 27
-    Top = 24
-    Width = 432
+    Top = 36
+    Width = 648
     ItemHeight = 0
     Style = csDropDownList
     TabOrder = 0
   end
   object Button1: TButton
-    Left = 248
-    Height = 29
-    Top = 328
-    Width = 97
+    Left = 372
+    Height = 44
+    Top = 492
+    Width = 146
     Caption = 'OK'
     ModalResult = 1
     TabOrder = 1
   end
   object Button2: TButton
-    Left = 351
-    Height = 29
-    Top = 328
-    Width = 97
+    Left = 526
+    Height = 44
+    Top = 492
+    Width = 146
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 2
   end
   object Memo1: TMemo
-    Left = 16
-    Height = 218
-    Top = 64
-    Width = 432
+    Left = 24
+    Height = 327
+    Top = 96
+    Width = 648
     TabOrder = 3
   end
   object Button3: TButton
-    Left = 16
-    Height = 29
-    Top = 328
-    Width = 131
+    Left = 24
+    Height = 44
+    Top = 492
+    Width = 196
     Caption = 'DB Data'
-    OnClick = Button3Click
     TabOrder = 4
+    OnClick = Button3Click
   end
 end
