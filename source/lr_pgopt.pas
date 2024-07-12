@@ -117,13 +117,17 @@ begin
       Canvas.Brush.Color:=clWindow;
       
     Canvas.FillRect(aRect);
-    Canvas.TextRect(aRect, aRect.Left + 17, aRect.Top+ 3, Items[Index]);
-    
-    aRect.Right := aRect.Left + 16;
 
+    Canvas.TextRect(aRect, aRect.Left + 1, aRect.Top, Items[Index]); //2022.03.15 LBZ
+    aRect.Right := aRect.Left;
+    //2022.03.15 LBZ取消以下代码
+    //Canvas.TextRect(aRect, aRect.Left + 17, aRect.Top+ 3, Items[Index]);
+    //
+    //aRect.Right := aRect.Left + 16;
+    //2022.03.15 LBZ取消以上代码
     Canvas.Brush.Color := clWhite;
     Canvas.FillRect(aRect);
-    
+{  //2022.03.15 LBZ取消以下代码
     i := PtrInt(Items.Objects[Index]);
     if (i>=1)and(i<=MAX_TYP_KNOWN) then   S := 'W' else // Known Windows std paper size
     if (i>MAX_TYP_KNOWN) and (i<256) then S := 'w' else // Unknown Windows std paper size
@@ -133,7 +137,8 @@ begin
 
     Canvas.Font.Color := clWindowText;
     Canvas.TextRect(aRect, aRect.Left+1, aRect.Top+3, S);
-
+    //2022.03.15 LBZ取消以上代码
+}
   end;
 end;
 
@@ -256,6 +261,7 @@ var
   isCustom: Boolean;
   pgIndex: Integer;
   PaperRect: TPaperRect;
+  ps:TPaperSize;//2022.12.12 LBZ 修复纸张规格与打印机不同时的错误提示
 begin
   isCustom := (pgSize = $100);
   frEnableControls([Label1, Label2, E1, E2], isCustom);
@@ -264,9 +270,14 @@ begin
     E2.Text := IntToStr(PaperHeight);
   end else begin
     pgIndex := prn.GetArrayPos(pgSize);
-    PaperRect := prn.Printer.PaperSize.PaperRectOf[prn.PaperNames[pgIndex]];
-    E1.Text := IntToStr(round(PaperRect.PhysicalRect.Width*25.4/prn.Printer.XDPI));
-    E2.Text := IntToStr(round(PaperRect.PhysicalRect.Height*25.4/prn.Printer.YDPI));
+    ps:=TPaperSize.Create(Printer);//2022.12.12 LBZ 修复纸张规格与打印机不同时的错误提示
+    if ps.SupportedPapers.IndexOf(prn.PaperNames[pgIndex])<>-1 then //2022.12.12 LBZ 修复纸张规格与打印机不同时的错误提示
+    begin
+      PaperRect := prn.Printer.PaperSize.PaperRectOf[prn.PaperNames[pgIndex]];
+      E1.Text := IntToStr(round(PaperRect.PhysicalRect.Width*25.4/prn.Printer.XDPI));
+      E2.Text := IntToStr(round(PaperRect.PhysicalRect.Height*25.4/prn.Printer.YDPI));
+    end;
+    ps.Free;////2022.12.12 LBZ 修复纸张规格与打印机不同时的错误提示
   end;
 end;
 

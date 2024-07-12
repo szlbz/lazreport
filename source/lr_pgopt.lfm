@@ -13,28 +13,27 @@ object frPgoptForm: TfrPgoptForm
   OnCreate = FormCreate
   Position = poScreenCenter
   ShowHint = True
-  LCLVersion = '3.0.0.3'
   object PageControl1: TPageControl
     Left = 0
-    Height = 290
+    Height = 443
     Top = 0
-    Width = 467
+    Width = 700
     ActivePage = TabSheet1
     Align = alClient
     TabIndex = 0
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Paper'
-      ClientHeight = 262
-      ClientWidth = 459
+      ClientHeight = 406
+      ClientWidth = 692
       object GroupBox2: TGroupBox
         AnchorSideTop.Control = TabSheet1
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = TabSheet1
         AnchorSideBottom.Side = asrBottom
-        Left = 167
-        Height = 250
+        Left = 397
+        Height = 388
         Top = 9
         Width = 286
         Anchors = [akTop, akRight, akBottom]
@@ -42,15 +41,15 @@ object frPgoptForm: TfrPgoptForm
         BorderSpacing.Right = 9
         BorderSpacing.Bottom = 9
         Caption = 'Orientation'
-        ClientHeight = 230
+        ClientHeight = 359
         ClientWidth = 282
         TabOrder = 0
         object imgLandScape: TImage
           AnchorSideRight.Control = GroupBox2
           AnchorSideRight.Side = asrBottom
-          Left = 149
+          Left = 241
           Height = 26
-          Top = 103
+          Top = 168
           Width = 32
           Anchors = [akRight]
           AutoSize = True
@@ -92,9 +91,9 @@ object frPgoptForm: TfrPgoptForm
         object imgPortrait: TImage
           AnchorSideRight.Control = GroupBox2
           AnchorSideRight.Side = asrBottom
-          Left = 155
+          Left = 247
           Height = 32
-          Top = 100
+          Top = 165
           Width = 26
           Anchors = [akRight]
           AutoSize = True
@@ -138,21 +137,21 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Control = GroupBox2
           AnchorSideTop.Side = asrCenter
           Left = 4
-          Height = 44
-          Top = 140
-          Width = 82
+          Height = 65
+          Top = 147
+          Width = 125
           AutoSize = True
           BorderSpacing.Left = 4
           BevelOuter = bvNone
-          ClientHeight = 44
-          ClientWidth = 82
+          ClientHeight = 65
+          ClientWidth = 125
           TabOrder = 0
           object RB1: TRadioButton
             AnchorSideTop.Control = Panel1
             Left = 9
-            Height = 19
+            Height = 28
             Top = 0
-            Width = 59
+            Width = 90
             HelpContext = 111
             BorderSpacing.Left = 9
             Caption = '&Portrait'
@@ -166,9 +165,9 @@ object frPgoptForm: TfrPgoptForm
             AnchorSideTop.Control = RB1
             AnchorSideTop.Side = asrBottom
             Left = 9
-            Height = 19
-            Top = 38
-            Width = 76
+            Height = 28
+            Top = 37
+            Width = 116
             HelpContext = 120
             BorderSpacing.Top = 9
             Caption = '&Landscape'
@@ -184,25 +183,25 @@ object frPgoptForm: TfrPgoptForm
         AnchorSideBottom.Control = TabSheet1
         AnchorSideBottom.Side = asrBottom
         Left = 9
-        Height = 250
+        Height = 388
         Top = 9
-        Width = 250
+        Width = 379
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Left = 9
         BorderSpacing.Top = 9
         BorderSpacing.Right = 9
         BorderSpacing.Bottom = 9
         Caption = 'Size'
-        ClientHeight = 230
-        ClientWidth = 246
+        ClientHeight = 359
+        ClientWidth = 375
         TabOrder = 1
         object Label1: TLabel
           AnchorSideBottom.Control = E1
           AnchorSideBottom.Side = asrBottom
           Left = 12
-          Height = 15
-          Top = 51
-          Width = 60
+          Height = 24
+          Top = 69
+          Width = 96
           Anchors = [akLeft, akBottom]
           Caption = '&Width, mm'
           FocusControl = E1
@@ -212,9 +211,9 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideBottom.Control = E2
           AnchorSideBottom.Side = asrBottom
           Left = 12
-          Height = 15
-          Top = 80
-          Width = 64
+          Height = 24
+          Top = 110
+          Width = 102
           Anchors = [akLeft, akBottom]
           Caption = '&Height, mm'
           FocusControl = E2
@@ -225,9 +224,9 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideRight.Control = GroupBox3
           AnchorSideRight.Side = asrBottom
           Left = 9
-          Height = 22
+          Height = 30
           Top = 22
-          Width = 234
+          Width = 357
           HelpContext = 130
           Anchors = [akTop, akLeft, akRight]
           BorderSpacing.Left = 9
@@ -244,9 +243,9 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = GroupBox3
           AnchorSideRight.Side = asrBottom
-          Left = 129
-          Height = 23
-          Top = 64
+          Left = 255
+          Height = 32
+          Top = 61
           Width = 111
           HelpContext = 140
           Anchors = [akTop, akRight]
@@ -259,9 +258,9 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = GroupBox3
           AnchorSideRight.Side = asrBottom
-          Left = 129
-          Height = 23
-          Top = 108
+          Left = 255
+          Height = 32
+          Top = 102
           Width = 111
           HelpContext = 150
           Anchors = [akTop, akRight]
@@ -273,8 +272,8 @@ object frPgoptForm: TfrPgoptForm
     end
     object TabSheet3: TTabSheet
       Caption = 'Options'
-      ClientHeight = 262
-      ClientWidth = 459
+      ClientHeight = 406
+      ClientWidth = 692
       object GroupBox1: TGroupBox
         AnchorSideLeft.Control = TabSheet3
         AnchorSideTop.Control = TabSheet3
@@ -284,18 +283,18 @@ object frPgoptForm: TfrPgoptForm
         Left = 9
         Height = 78
         Top = 9
-        Width = 216
+        Width = 324
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 9
         Caption = 'Options'
-        ClientHeight = 58
-        ClientWidth = 212
+        ClientHeight = 49
+        ClientWidth = 320
         TabOrder = 0
         object CB1: TCheckBox
           Left = 9
-          Height = 19
+          Height = 28
           Top = 9
-          Width = 136
+          Width = 216
           HelpContext = 160
           Caption = '&Print to previous page'
           TabOrder = 0
@@ -308,24 +307,24 @@ object frPgoptForm: TfrPgoptForm
         AnchorSideBottom.Control = TabSheet3
         AnchorSideBottom.Side = asrBottom
         Left = 342
-        Height = 250
+        Height = 388
         Top = 9
-        Width = 225
+        Width = 341
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Top = 9
         BorderSpacing.Right = 9
         BorderSpacing.Bottom = 9
         Caption = 'Columns'
-        ClientHeight = 230
-        ClientWidth = 221
+        ClientHeight = 359
+        ClientWidth = 337
         TabOrder = 1
         object Label7: TLabel
           AnchorSideLeft.Control = GroupBox5
           AnchorSideTop.Control = GroupBox5
           Left = 0
-          Height = 15
+          Height = 24
           Top = 0
-          Width = 44
+          Width = 72
           Caption = '&Number'
           ParentColor = False
         end
@@ -334,9 +333,9 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Control = ecolCount
           AnchorSideTop.Side = asrBottom
           Left = 0
-          Height = 15
-          Top = 75
-          Width = 94
+          Height = 24
+          Top = 74
+          Width = 149
           Caption = '&Column gap, mm'
           FocusControl = E7
           ParentColor = False
@@ -346,9 +345,9 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Control = E7
           AnchorSideTop.Side = asrBottom
           Left = 9
-          Height = 15
-          Top = 150
-          Width = 69
+          Height = 24
+          Top = 148
+          Width = 114
           BorderSpacing.Around = 9
           Caption = 'Layout Order'
           ParentColor = False
@@ -404,8 +403,8 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = GroupBox5
           Left = 9
-          Height = 23
-          Top = 106
+          Height = 32
+          Top = 107
           Width = 190
           HelpContext = 180
           BorderSpacing.Around = 9
@@ -416,8 +415,8 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Control = Label7
           AnchorSideTop.Side = asrBottom
           Left = 9
-          Height = 23
-          Top = 32
+          Height = 32
+          Top = 33
           Width = 190
           BorderSpacing.Around = 9
           OnChange = ecolCountChange
@@ -428,9 +427,9 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Control = lblLayout
           AnchorSideTop.Side = asrBottom
           Left = 18
-          Height = 19
-          Top = 182
-          Width = 84
+          Height = 28
+          Top = 181
+          Width = 126
           BorderSpacing.Around = 9
           Caption = 'By Colum&ns'
           Checked = True
@@ -444,9 +443,9 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Control = RBColumns
           AnchorSideTop.Side = asrBottom
           Left = 18
-          Height = 19
-          Top = 219
-          Width = 64
+          Height = 28
+          Top = 218
+          Width = 96
           BorderSpacing.Around = 9
           Caption = 'By Row&s'
           Enabled = False
@@ -462,23 +461,23 @@ object frPgoptForm: TfrPgoptForm
         AnchorSideBottom.Control = TabSheet3
         AnchorSideBottom.Side = asrBottom
         Left = 9
-        Height = 192
+        Height = 301
         Top = 96
-        Width = 216
+        Width = 324
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Around = 9
         Caption = 'Page margins'
-        ClientHeight = 172
-        ClientWidth = 212
+        ClientHeight = 272
+        ClientWidth = 320
         TabOrder = 2
         object Label3: TLabel
           AnchorSideTop.Control = CB5
           AnchorSideTop.Side = asrBottom
           AnchorSideBottom.Side = asrBottom
           Left = 162
-          Height = 15
+          Height = 24
           Top = 40
-          Width = 48
+          Width = 75
           BorderSpacing.Left = 9
           Caption = '&Left, mm'
           ParentColor = False
@@ -489,9 +488,9 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Side = asrBottom
           AnchorSideBottom.Side = asrBottom
           Left = 21
-          Height = 15
+          Height = 24
           Top = 40
-          Width = 47
+          Width = 76
           BorderSpacing.Left = 9
           Caption = '&Top, mm'
           ParentColor = False
@@ -502,9 +501,9 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Side = asrBottom
           AnchorSideBottom.Side = asrBottom
           Left = 21
-          Height = 15
-          Top = 116
-          Width = 56
+          Height = 24
+          Top = 114
+          Width = 90
           Caption = '&Right, mm'
           ParentColor = False
         end
@@ -514,18 +513,18 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Side = asrBottom
           AnchorSideBottom.Side = asrBottom
           Left = 162
-          Height = 15
-          Top = 116
-          Width = 68
+          Height = 24
+          Top = 114
+          Width = 107
           Caption = '&Bottom, mm'
           ParentColor = False
         end
         object CB5: TCheckBox
           AnchorSideTop.Side = asrBottom
           Left = 12
-          Height = 19
+          Height = 28
           Top = 3
-          Width = 70
+          Width = 107
           HelpContext = 62
           BorderSpacing.Around = 9
           Caption = '&Don''t use'
@@ -537,8 +536,8 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Control = Label3
           AnchorSideTop.Side = asrBottom
           Left = 171
-          Height = 23
-          Top = 72
+          Height = 32
+          Top = 73
           Width = 96
           HelpContext = 72
           BorderSpacing.Around = 9
@@ -549,8 +548,8 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Control = Label4
           AnchorSideTop.Side = asrBottom
           Left = 30
-          Height = 23
-          Top = 72
+          Height = 32
+          Top = 73
           Width = 96
           HelpContext = 81
           BorderSpacing.Around = 9
@@ -561,7 +560,7 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Control = Label5
           AnchorSideTop.Side = asrBottom
           Left = 30
-          Height = 23
+          Height = 32
           Top = 147
           Width = 96
           HelpContext = 91
@@ -573,7 +572,7 @@ object frPgoptForm: TfrPgoptForm
           AnchorSideTop.Control = Label6
           AnchorSideTop.Side = asrBottom
           Left = 171
-          Height = 23
+          Height = 32
           Top = 147
           Width = 96
           HelpContext = 101
@@ -584,10 +583,10 @@ object frPgoptForm: TfrPgoptForm
     end
   end
   object ButtonPanel1: TButtonPanel
-    Left = 6
-    Height = 34
-    Top = 296
-    Width = 455
+    Left = 9
+    Height = 43
+    Top = 452
+    Width = 682
     BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
