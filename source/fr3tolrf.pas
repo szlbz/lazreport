@@ -34,12 +34,14 @@ unit fr3tolrf;
 interface
 
 uses
-  Classes, SysUtils, Laz2_DOM, Laz2_XMLRead, LConvEncoding, FileUtil, Graphics, lr_class;
+  Classes, SysUtils, Laz2_DOM, Laz2_XMLRead, LConvEncoding, FileUtil, Graphics, lr_class,
+  lazutf8;
 
 type
   EFR3ReaderException = class(Exception);
 
   function LoadFastReport3(Report: TfrReport; aFileName: string; out log:string): Integer;
+  function Savefr3tolrf(Report: TfrReport;aFileName: string; out log:string): Integer;
 
 implementation
 
@@ -109,19 +111,34 @@ type
     property Messages: string read GetMessages;
   end;
 
+
 function LoadFastReport3(Report: TfrReport; aFileName: string; out Log:string): Integer;
 var
   Reader: Tfr3Reader;
 begin
   Result := 0;
-  Reader := Tfr3Reader.Create;
-  Reader.Report := Report;
-  try
-    Reader.LoadFromFile(aFileName);
-    log := Reader.Messages;
-  finally
-    Reader.Free;
-  end;
+  if aFileName<>'' then
+  begin
+    Reader := Tfr3Reader.Create;
+    Reader.Report := Report;
+    try
+      Reader.LoadFromFile(aFileName);
+      log := Reader.Messages;
+    finally
+      Reader.Free;
+    end;
+  end
+  else log:='缺少fr3的文件名';
+end;
+
+function Savefr3tolrf(Report: TfrReport;aFileName: string; out log:string): Integer;
+begin
+  if aFileName<>'' then
+  begin
+    LoadFastReport3(Report,aFileName,Log);
+    Report.SaveToFile(utf8copy(ExpandFileName(aFileName),1,utf8length(ExpandFileName(aFileName))-4)+'.lrf');
+  end
+  else log:='缺少fr3的文件名';
 end;
 
 function DelphiIntToFpcFontStyle(aStyle: Integer): TFontStyles;
