@@ -1,4 +1,3 @@
-
 {*****************************************}
 {                                         }
 {             FastReport v2.3             }
@@ -78,7 +77,7 @@ const
   fmtDate                  = 2;
   fmtTime                  = 3;
   fmtBoolean               = 4;
-  
+
 type
   //LBZ
   TWaterMark = packed record
@@ -188,16 +187,16 @@ type
     Band   : TfrBand;
     Action : TfrBandRecType;
   end;
-  
+
   TLayoutOrder = (loColumns, loRows);
 
   ELazReportException = class(Exception);
 
   TfrMemoStrings  =Class(TStringList);
   TfrScriptStrings=Class(TStringList);
-  
+
   TfrDialogForm = Class(TForm);
-  
+
   { TLrXMLConfig }
 
   TLrXMLConfig = class (TXMLConfig)
@@ -217,7 +216,7 @@ type
     fScript : TfrScriptStrings;
     fVisible: Boolean;
     fUpdate : Integer;
-    
+
     procedure SetMemo(const AValue: TfrMemoStrings);
     procedure SetScript(const AValue: TfrScriptStrings);
   protected
@@ -256,7 +255,7 @@ type
 
     procedure BeginUpdate;virtual;
     procedure EndUpdate;virtual;
-    
+
     procedure CreateUniqueName;
 
     procedure LoadFromXML(XML: TLrXMLConfig; const Path: String); virtual;
@@ -273,7 +272,7 @@ type
     property Name   : string read fName write SetName;
     property Visible: Boolean read fVisible write SetVisible;
   end;
-  
+
   { TfrView }
 
   TfrView = class(TfrObject)
@@ -354,7 +353,7 @@ type
 
     constructor Create(AOwnerPage:TfrPage); override;
     destructor Destroy; override;
-    
+
     procedure Assign(Source: TPersistent); override;
     procedure CalcGaps; virtual;
     procedure RestoreCoord; virtual;
@@ -522,10 +521,10 @@ type
     CharacterSpacing: Integer;
     LastLine: boolean; // are we painting/exporting the last line?
     FirstLine: boolean;
-    
+
     constructor Create(AOwnerPage:TfrPage); override;
     destructor Destroy; override;
-    
+
     procedure Assign(Source: TPersistent); override;
     procedure Draw(aCanvas: TCanvas); override;
     procedure Print(Stream: TStream); override;
@@ -538,7 +537,7 @@ type
 
     procedure MonitorFontChanges;
     property Justify: boolean read GetJustify write SetJustify;
-    
+
     property Cursor: TCursor read FCursor write SetCursor default crDefault;
     property DetailReport   : string read FDetailReport write FDetailReport;
     property Font      : TFont read fFont write SetFont;
@@ -620,17 +619,17 @@ type
     constructor Create(AOwnerPage:TfrPage); override;
 
     procedure Assign(Source: TPersistent); override;
-    
+
     procedure LoadFromStream(Stream: TStream); override;
     procedure LoadFromXML(XML: TLrXMLConfig; const Path: String); override;
     procedure SaveToStream(Stream: TStream); override;
     procedure SaveToXML(XML: TLrXMLConfig; const Path: String); override;
-    
+
 
     procedure Draw(aCanvas: TCanvas); override;
     procedure DefinePopupMenu(Popup: TPopupMenu); override;
     function GetClipRgn(rt: TfrRgnType): HRGN; override;
-    
+
     function PointInView(aX,aY : Integer) : Boolean; override;
 
 
@@ -676,7 +675,7 @@ type
   private
     fPicture: TPicture;
     FSharedName: string;
-    
+
     function GetCentered: boolean;
     function GetKeepAspect: boolean;
     procedure P1Click(Sender: TObject);
@@ -693,7 +692,7 @@ type
   public
     constructor Create(AOwnerPage:TfrPage); override;
     destructor Destroy; override;
-    
+
     procedure Assign(Source: TPersistent); override;
     procedure Draw(aCanvas: TCanvas); override;
     procedure LoadFromStream(Stream: TStream); override;
@@ -730,7 +729,7 @@ type
     procedure Draw(aCanvas: TCanvas); override;
     function GetClipRgn(rt: TfrRgnType): HRGN; override;
     function PointInView(aX,aY: Integer): Boolean; override;
-    
+
   published
     property FrameColor;
     property FrameStyle;
@@ -749,14 +748,14 @@ type
     procedure SetRect(const AValue: TRect);
   public
     property AsRect : TRect read GetRect write SetRect;
-    
+
   published
     property Left : Integer read fLeft write fLeft;
     property Top  : Integer read fTop  write fTop;
     property Right: Integer read fRight write fRight;
     property Bottom : Integer read fBottom write fBottom;
   end;
-  
+
   TfrBand = class(TfrObject)
   private
     Parent: TfrPage;
@@ -906,13 +905,13 @@ type
     RTObjects : TFpList;
     CurY      : Integer;
     CurBottomY: Integer;
-    
+
     constructor Create(AOwnerPage:TfrPage); override;
     destructor Destroy; override;
 
     constructor Create(ASize, AWidth, AHeight: Integer; AOr: TPrinterOrientation);
     constructor CreatePage; virtual;
-    
+
     procedure LoadFromXML(XML: TLrXMLConfig; const Path: String); override;
     procedure SavetoXML(XML: TLrXMLConfig; const Path: String); override;
 
@@ -935,7 +934,7 @@ type
     procedure StartColumn;
     procedure StartRowsLayoutNonDataBand(Band: TfrBand);
     function  AdvanceRow(Band: TfrBand): boolean;
-    
+
     property ColCount : Integer read fColCount write fColCount;
     property ColWidth : Integer read fColWidth write fColWidth;
     property ColGap   : Integer read fColGap write fColGap;
@@ -957,14 +956,14 @@ type
   end;
 
   TFrPageClass = Class of TfrPage;
-  
+
   { TfrPageReport }
 
   TfrPageReport = Class(TfrPage)
   public
     procedure LoadFromXML(XML: TLrXMLConfig; const Path: String); override;
     procedure SavetoXML(XML: TLrXMLConfig; const Path: String); override;
-    
+
     constructor CreatePage; override;
   published
     property ColCount;
@@ -1215,7 +1214,7 @@ type
     FPageNumbers  : String;
     FCopies       : Integer;
 //    FCurPage      : TfrPage;
-    
+
 //    FDefaultTitle : String;
     FTitle        : String;
     FSubject      : string;
@@ -1454,7 +1453,7 @@ type
     funGroup:string;
     funDescription:string;
   end;
-  
+
   { TfrFunctionLibrary }
 
   TfrFunctionLibrary = class(TObject)
@@ -1533,7 +1532,7 @@ const
   frAllFrames=[frbLeft, frbTop, frbRight, frbBottom];
 
   frUnwrapRead: boolean = false; // TODO: remove this for 0.9.28
-  
+
 type
   PfrTextRec = ^TfrTextRec;
   TfrTextRec = record
@@ -1637,9 +1636,9 @@ var
   SMemo: TStringList;          // temporary memo used during TfrView drawing
   ShowBandTitles: Boolean = True;
   ProcedureInitDesigner : Procedure = nil;
-  
+
 (*
-  FRE_COMPATIBLEREAD variable added for migrating from older versions 
+  FRE_COMPATIBLEREAD variable added for migrating from older versions
   of FreeReport and will be removed in next releases as soon as possible.
 *)
 {$IFDEF FREEREP2217READ}
@@ -1967,7 +1966,7 @@ begin
           raise EClassNotFound.Create(Format(sClassObjectNotFound,[ClassName]));
       end;
   end;
-  
+
   if Result <> nil then
   begin
     {$IFDEF DebugLR}
@@ -2658,7 +2657,7 @@ begin
   OffsX := 0;
   OffsY := 0;
   Flags := flStretched;
-  
+
   fFrames:=[]; //No frame
 end;
 
@@ -2731,7 +2730,7 @@ begin
   by := y;
   bx1 := Round((SaveX + SaveDX) * ScaleX + OffsX);
   by1 := Round((SaveY + SaveDY) * ScaleY + OffsY);
-  
+
   if frbTop in Frames    then Dec(bx1, wx2);
   if frbLeft in Frames   then Dec(by1, wy2);
   if frbBottom in Frames then Inc(bx, wx1);
@@ -2792,7 +2791,7 @@ var
     Canvas.MoveTo(X11, Y11);
     Canvas.LineTo(X11+DX11, Y11+Dy11);
   end;
-  
+
   procedure Line1(x, y, x1, y1: Integer);
   var
     i, w: Integer;
@@ -2888,7 +2887,7 @@ begin
     // use calculating coords instead of dx, dy - for best view
     x1 := Round((SaveX + SaveDX) * ScaleX + OffsX);
     y1 := Round((SaveY + SaveDY) * ScaleY + OffsY);
-    
+
     { // todo: Frame is not implemented in Win32
     if ((frbTop in Frames) and (frbLeft in Frames) and
         (frbBottom   in Frames) and (frbRight  in Frames)) and (FrameStyle=frsSolid) then
@@ -2901,7 +2900,7 @@ begin
       if (frbBottom in Frames) then Line1(x, y1, x1, y1);
       if (frbTop  in Frames) then Line1(x, y, x1, y);
     end;
-    
+
     Brush.Style := bsSolid;
   end;
 end;
@@ -2970,7 +2969,7 @@ begin
       else
         CreateUniqueName;
     end;
-    
+
     //Read(x, 18); // this is equal to, but much faster:
     Read(x, 4);
     Read(y, 4);
@@ -3193,7 +3192,7 @@ begin
   XML.SetValue(Path+'Size/Width/Value'{%H-}, dx);
   XML.SetValue(Path+'Size/Height/Value'{%H-}, dy);
   XML.SetValue(Path+'Flags/Value'{%H-}, flags);
-  
+
   if IsPublishedProp(self,'FillColor') then
     XML.SetValue(Path+'FillColor/Value', GetSaveProperty('FillColor'));
 
@@ -3282,7 +3281,7 @@ begin
   by:=y;
   bx1:=x+dx+1;
   by1:=y+dy+1;
-  
+
   if (frbTop  in Frames) then Inc(bx1, w2);
   if (frbLeft  in Frames) then Inc(by1, w2);
   if (frbBottom  in Frames) then Dec(bx, w1);
@@ -3760,7 +3759,7 @@ var
       end;
     until i = j;
   end;
-  
+
 var
   s: string;
 begin
@@ -4149,7 +4148,7 @@ var
       else
         OutLine(Memo1[i]);
     end;
-    
+
     SelectObject(WCanvas.Handle, oldh);
     DeleteObject(h);
     VHeight := size - x + InternalGapX;
@@ -4272,13 +4271,13 @@ var
       {$ifdef linux}
       if IsPrinting then
       begin
-        if Canvas.TextWidth(str)+x<x+dr.Right then
+        if Canvas.TextWidth(str)+x<x+dr.Width then
           Canvas.TextRect(DR, round(x + PGap), y, Str,AStyle);
         if Alignment= Classes.taCenter then
-          x := x + c + c1 + Canvas.TextWidth(str)//+round(CharacterSpacing* ScaleX)
+          x := x + c + c1 + Canvas.TextWidth(str)
         else
         begin
-          if x + c + c1 + Canvas.TextWidth(str)+FCharacterSpacing<x+dr.Right then
+          if x + c + c1 + Canvas.TextWidth(str)+FCharacterSpacing<x+dr.Width then
             x := x + c + c1 + Canvas.TextWidth(str)+FCharacterSpacing//修正打印时的宽度
           else
             x := x + c + c1 + Canvas.TextWidth(str);//修正打印时的宽度
@@ -4483,10 +4482,11 @@ var
     {$else}
     if IsPrinting then
     begin
-      FCharacterSpacing:=Round(ScaleX*0.8); //修正linux字体间隙
+      //FCharacterSpacing:=Round(ScaleX*0.8); //修正linux字体间隔
       //SetTextCharacterExtra(Canvas.Handle, Round(CharacterSpacing * ScaleX));
       PPI := (Canvas as TPrinterCanvas).XDPI;//GetDeviceCaps(self.Canvas.Handle , LOGPIXELSY);
       thf := h * ( PPI / 72);
+      FCharacterSpacing:=Round(PPI/96*0.8); //修正linux字体间隔
     end
     else
       thf := h * (96 / 72) * ScaleY;
@@ -4503,23 +4503,18 @@ var
 
     FirstLine:=true;
 
-    //{$ifdef linux}
-    //if IsPrinting then//linux可能存在字符串宽度比单元各的宽度的问题，如果超过则缩小字体
-    //begin
-    //  for i := 0 to Memo1.Count - 1 do
-    //  begin
-    //    if Canvas.TextWidth(Memo1[i])>DRect.Right-DRect.Left then
-    //    begin
-    //      Canvas.Font.Size:=Canvas.Font.Size-1;
-    //      //Canvas.Font.Height := Canvas.Font.Height+1;
-    //      break;
-    //    end;
-    //  end;
-    //end;
-    //{$endif}
+    //FCharacterSpacing:=0;
     for i := 0 to Memo1.Count - 1 do
+    begin
+      {$ifdef linux1}
+      if (isprinting) and (Canvas.TextWidth(Memo1[i])>dr.Width*0.8) then
+      begin
+         FCharacterSpacing:=(dr.Width-Canvas.TextWidth(Memo1[i])) div utf8length(Memo1[i]);
+      end;
+      {$endif}
       if OutLine(Memo1[i])  then
         break;
+    end;
     {$IFDEF DebugLR}
     DebugLn('CurStrNo=%d CurYf=%f Last"i"=%d',[CurStrNo, CurYf, i]);
     {$ENDIF}
@@ -4922,7 +4917,7 @@ begin
       FFillColor := Highlight.FillColor;
     end;
   end;
-  
+
   if (DrawMode = drPart) then
   begin
     CalcGaps;
@@ -4938,9 +4933,9 @@ begin
   Stream.Write(Typ, 1);
   if Typ = gtAddIn then
     frWriteString(Stream, ClassName);
-    
+
   SaveToStream(Stream);
-  
+
   if DrawMode = drPart then
   begin
     Memo1.Assign(SMemo);
@@ -5124,7 +5119,7 @@ begin
     Highlight.FillColor := StringToColor(XML.GetValue(Path+'Highlight/FillColor/Value', 'clWhite'));
     HighlightStr := XML.GetValue(Path+'Highlight/HighlightStr/Value', HighlightStr);
   end;
-  
+
   RestoreProperty('Alignment',XML.GetValue(Path+'Alignment/Value',''));
   RestoreProperty('Layout',XML.GetValue(Path+'Layout/Value',''));
   Angle := XML.GetValue(Path+'Angle/Value'{%H-}, 0);
@@ -5635,7 +5630,7 @@ end;
 procedure TfrBandView.SaveToStream(Stream: TStream);
 begin
   inherited SaveToStream(Stream);
-  
+
   with Stream do
   begin
     Write(fBandType,SizeOf(fBandType));
@@ -5765,7 +5760,7 @@ begin
   CombineRgn(R2, R, R1, RGN_OR);
   Result:=R2;
 
-  
+
   DeleteObject(R);
   DeleteObject(R1);
 end;
@@ -6857,7 +6852,7 @@ var
   DS : TfrDataSet;
   ddx: Integer;
   BM : Pointer;
-  
+
   function SubDoCalcHeight(CheckAll: Boolean): Integer;
   var
     i, h, vh: Integer;
@@ -7076,7 +7071,7 @@ begin
         end;
       end;
     end;
-    
+
     if not EOFReached then
     begin
       if Parent.Skip then
@@ -7088,9 +7083,9 @@ begin
       if Typ <> btPageFooter then
         Parent.NewPage;
     end;
-    
+
   until EOFReached or MasterReport.Terminated;
-  
+
   for i := SubIndex to Objects.Count - 1 do
   begin
     t :=TfrView(Objects[i]);
@@ -7184,7 +7179,7 @@ var
   CurX, ddx : Integer;
   DS        : TfrDataSet;
   BM        : Pointer;
-  
+
   procedure CheckColumnPageBreak(ddx: Integer);
   var
     sfy: Integer;
@@ -7240,7 +7235,7 @@ begin
       DS := Bnd.DataSet
     else
       DS := VCDataSet;
-      
+
     if DS <> nil then
     begin
       BM:=DS.GetBookMark;
@@ -7270,7 +7265,7 @@ begin
       end;
     end;
   end;
-  
+
   if Parent.BandExists(Parent.Bands[btCrossFooter]) then
   begin
     Bnd := Parent.Bands[btCrossFooter];
@@ -7588,7 +7583,7 @@ begin
   {$ENDIF}
 
   Parent.RowStarted := True;
-    
+
   if Stretched then
   begin
     sh := CalculatedHeight;
@@ -7807,7 +7802,7 @@ begin
     if Parent.RowsLayout and (typ<>btColumnHeader) then
       Parent.StartColumn;
   end;
-  
+
   CurReport.DoEndBand(Self);
   Parent.LastBandType := typ;
   {$IFDEF debugLr}
@@ -7921,7 +7916,7 @@ begin
   {$endif}
 
   Self.Create(nil);
-  
+
   ChangePaper(ASize, AWidth, AHeight, AOr);
   PrintToPrevPage := False;
   UseMargins := True;
@@ -8830,7 +8825,7 @@ var
   {$IFDEF DebugLR}
   mys                  : string;
   {$ENDIF}
-  
+
   procedure AddToStack(b: TfrBand);
   begin
     if b <> nil then
@@ -9167,12 +9162,12 @@ begin
         PageNo := MasterReport.EMFPages.Count;
       end;
     end;
-    
+
     if AppendPage and WasPF then
       CurBottomY := PrevBottomY
     else
       CurBottomY := BottomMargin;
-      
+
     CurColumn := 0;
     XAdjust := LeftMargin;
     {$IFDEF DebugLR}
@@ -9332,7 +9327,7 @@ procedure TfrPage.LoadFromXML(XML: TLrXMLConfig; const Path: String);
   b:byte; }
 begin
   inherited LoadFromXML(XML,Path);
-  
+
   dx := XML.GetValue(Path+'Width/Value'{%H-}, 0); // TODO chk
   dy := XML.GetValue(Path+'Height/Value'{%H-}, 0); // TODO chk
 {  b := XML.GetValue(Path+'PageType/Value'{%H-}, ord(PageType));
@@ -9438,7 +9433,7 @@ begin
   if Assigned(Rf) then
   begin
     Result := Rf.CreatePage;
-    
+
     if Assigned(Result) then
     begin
       Result.CreateUniqueName;
@@ -9563,7 +9558,7 @@ begin
     aPath := Path+'Page'+IntToStr(i+1)+'/';
     clname:= XML.GetValue(aPath+'ClassName/Value', 'TFRPAGEREPORT');
     add(clName);
-    
+
     Inc(Pages[i].fUpdate);
     Pages[i].LoadFromXML(XML, aPath);
     Dec(Pages[i].fUpdate);
@@ -9906,7 +9901,7 @@ begin
     FPages.Add(p)
   else
     FPages.Insert(Index, p);
-    
+
   with p^ do
   begin
     Stream := TMemoryStream.Create;
@@ -10563,7 +10558,7 @@ begin
           Label1.Caption:=Format('%s %d %s %d',[FirstCaption,Percent,sFrom,SavedAllPages])
         else
           Label1.Caption:=Format('%s %d',[FirstCaption,Percent]);
-          
+
         Application.ProcessMessages;
       end;
     end;
@@ -10716,7 +10711,7 @@ begin
     Result := ' ';
     Exit;
   end;
-  
+
   c := DefaultFormatSettings.DecimalSeparator;
   f1 := (AFormat div $01000000) and $0F;
   f2 := (AFormat div $00010000) and $FF;
@@ -10951,7 +10946,7 @@ begin
     begin
       // PageName.ObjName.Method
       Obj:=Page;
-      
+
       if Method<>'' then
       begin
         ObjName:=Copy2SymbDel(Method, '.');
@@ -11225,7 +11220,7 @@ begin
     Ext:='.lrf';
     fName:=ChangeFileExt(fName,Ext);
   end;
-  
+
   if SameText('.lrf',Ext) then
     SaveToXMLFile(fName)
   else
@@ -11578,14 +11573,14 @@ begin
     FillQueryParams;
     ParamOk := frDataManager.ShowParamsDialog;
   end;
-  
+
   if ParamOk then
     Result := DoPrepareReport;
-    
+
   FinalPass := False;
   if frDataManager <> nil then
     frDataManager.AfterParamsDialog;
-    
+
   DoEndDoc;
   {$IFDEF DebugLR}
   DebugLnExit('TfrReport.PrepareReport DONE');
@@ -11626,7 +11621,7 @@ begin
           Caption := s
         else
           Caption := s + ' - ' + Title;
-          
+
         FirstCaption := sFirstPass;
         Label1.Caption := FirstCaption + '  1';
         OnBeforeModal := @BuildBeforeModal;
@@ -11642,7 +11637,7 @@ begin
     {$ENDIF}
     Exit;
   end;
-  
+
   if not Assigned(FOnProgress) and FShowProgress and IsMainThread then
   begin
     {$IFDEF DebugLR}
@@ -11671,7 +11666,7 @@ begin
         {$ENDIF}
         if not FirstPassTerminated then
            DoublePass := True;
-           
+
         BuildBeforeModal(nil);
         {$IFDEF DebugLR}
         DebugLn('4');
@@ -11689,7 +11684,7 @@ begin
         DebugLn('6');
         {$ENDIF}
       end;
-      
+
       {$IFDEF DebugLR}
       DebugLnExit('DoPrepareReport SecondPass DONE');
       {$ENDIF}
@@ -12004,7 +11999,7 @@ begin
   s := sPreview;
   if Title <> '' then
     s := s + ' - ' + Title;
-    
+
   if not (csDesigning in ComponentState) and Assigned(Preview) then
   begin
     Preview.Connect(Self);
@@ -12082,7 +12077,7 @@ begin
   Terminated:=False;
   FPageNumbers:=PageNumbers;
   FCopies:=Copies;
-  
+
   if prn.Printer.PrinterName<>'' Then //2022.06.14 LBZ 防止未安装打印机时出错
   begin
     if not Assigned(FOnProgress) and FShowProgress and IsMainThread then
@@ -12123,7 +12118,7 @@ var
     IsRange: Boolean;
   begin
     s := PageNumbers;
-    
+
     while Pos(' ', s) <> 0 do
       Delete(s, Pos(' ', s), 1);
     if s = '' then Exit;
@@ -12147,7 +12142,7 @@ var
         end
         else
           pgList.Add(IntToStr(n2));
-          
+
         IsRange := False;
       end
       else if s[i] = '-' then
@@ -12156,7 +12151,7 @@ var
              n1 := StrToInt(Copy(s, j, i - j));
              j := i + 1;
            end;
-           
+
       Inc(i);
     end;
   end;
@@ -12183,7 +12178,7 @@ var
       end
       else if not isFirstPage then
              NewPage;
-             
+
       Prn.FillPrnInfo(PrnInfo);
       Visible := True;
 
@@ -12215,7 +12210,7 @@ var
         else
           EMFPages.Draw(n, Printer.Canvas, Rect(0, 0, PPw, PPh));
       end;
-      
+
       Visible := False;
     end;
     InternalOnProgress(n + 1);
@@ -12380,7 +12375,7 @@ function TfrReport.ChangePrinter(OldIndex, NewIndex: Integer): Boolean;
         Pages[i].ChangePaper(Pages[i].pgSize, Pages[i].Width, Pages[i].Height, Pages[i].Orientation);
     end;
   end;
-  
+
 begin
   {$ifdef dbgPrinter}
   DebugLn;
@@ -13320,7 +13315,7 @@ begin
    21: val := UTF8UpperCase(frParser.Calc(p1));               //Add('UPPERCASE');         {21}
    22: val := YearOf(frParser.Calc(p1));                      //Add('YEAROF');            {22}
   end;
-  
+
   if dk <> dkNone then
   begin
 
@@ -13341,7 +13336,7 @@ begin
         frGetDataSetAndField(lrGetUnBrackedStr(p1), DataSet, Field);
       end;
     end;
-      
+
     if (DataSet <> nil) and (Field <> nil) and AggrBand.Visible then
     begin
       min := 1e200; max := -1e200; sum := 0; count := 0; avg := 0;
@@ -13371,7 +13366,7 @@ begin
         DataSet.FreeBookMark(BM);
         DataSet.EnableControls;
       end;
-      
+
       if count > 0 then
         avg := sum / count;
       d := 0;
@@ -13583,9 +13578,9 @@ end;
 procedure DoInit;
 begin
   RegisterClasses([TfrPageReport,TfrPageDialog]);
-  
+
   frDesigner:=nil;
-  
+
   SMemo := TStringList.Create;
 
   frRegisterFunctionLibrary(TfrStdFunctionLibrary);
@@ -13744,7 +13739,7 @@ begin
 
   if not Assigned(aObj) then
     aObj:=Self;
-    
+
   Try
     PropInfo:=GetPropInfo(aObj,Prop);
     if Assigned(PropInfo) then
@@ -13788,7 +13783,7 @@ begin
   Try
     if not Assigned(aObj) then
       aObj:=Self;
-      
+
     PropInfo:=GetPropInfo(aObj,Prop);
     if Assigned(PropInfo) then
     begin
@@ -13839,7 +13834,7 @@ destructor TfrObject.Destroy;
 begin
   fmemo.Free;
   fScript.Free;
-  
+
   inherited Destroy;
 end;
 
@@ -13907,7 +13902,7 @@ procedure TfrObject.SaveToXML(XML: TLrXMLConfig; const Path: String);
 begin
   XML.SetValue(Path+'Name/Value', GetSaveProperty('Name'));
   XML.SetValue(Path+'ClassName/Value', self.Classname);
-  
+
   XML.SetValue(Path+'Visible/Value', Visible);
 end;
 
@@ -13962,7 +13957,7 @@ var
   Rc   : TRect;
 begin
   inherited SavetoXML(XML, Path);
-  
+
   Rc:=Margins.AsRect;
   XML.SetValue(Path+'PgSize/Value'{%H-}, PgSize);
   XML.SetValue(Path+'Margins/left/Value'{%H-}, Rc.Left);
@@ -14125,7 +14120,7 @@ constructor TfrPageDialog.Create(AOwnerPage: TfrPage);
 begin
   inherited Create(AOwnerPage);
   BaseName:='Dialog';
-  
+
   Width :=400;
   Height:=250;
   PageType:=ptDialog;
@@ -14209,5 +14204,3 @@ finalization
   DoExit;
 
 end.
-
-
