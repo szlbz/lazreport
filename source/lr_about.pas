@@ -38,6 +38,7 @@ type
     Label4: TLabel;
     Image1: TImage;
     Bevel2: TBevel;
+    Label5: TLabel;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

@@ -340,7 +340,7 @@ resourcestring
   sInsertFieldsDbNoFields = 'Database without fields';
 
 //--- AboutForm resources -----------------------------------------------------
-  sAboutFormCapt = 'About FastReport';
+  sAboutFormCapt = 'About LazReport';
 
 //---- Paper Src --------------------------------------------------------------
   sPaper1 = 'Letter, 8 1/2 x 11"';
@@ -523,6 +523,7 @@ resourcestring
   sFRDesignerFormCellsplitting='Cell splitting';
   sFRDesignerFormNumberofrows='Number of rows';
   sFRDesignerFormNumberofcols='Number of cols';
+  sLRSpreadSheetImportForm='Use not standart object names (improve import speed)';
   sFRDesignerFormVerticaluniformdistribution = 'Multiple rows and columns of cells need to be aligned before they can be evenly divided vertically.';
   sFRDesignerFormHorizontaluniformdistribution = 'Multiple rows and columns of cells need to be aligned before they can be evenly divided horizontally.';
   //  53131 = 'Frame width';

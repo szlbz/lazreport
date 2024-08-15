@@ -341,7 +341,7 @@ sVar9 = '总页数';//'TotalPages';
   sInsertFieldsDbNoFields = '不带字段的数据库';//'Database without fields';
 
 //--- AboutForm resources -----------------------------------------------------
-  sAboutFormCapt = 'About FastReport';
+  sAboutFormCapt = 'About LazReport';
 
 //---- Paper Src --------------------------------------------------------------
   sPaper1 = 'Letter, 8 1/2 x 11"';
@@ -526,6 +526,7 @@ sVar9 = '总页数';//'TotalPages';
   sFRDesignerFormNumberofcols='列数';
   sFRDesignerFormVerticaluniformdistribution = '多行各列单元格需对齐后才能垂直匀分。';
   sFRDesignerFormHorizontaluniformdistribution = '多行各列单元格需对齐后才能水平匀分。';
+  sLRSpreadSheetImportForm='使用非标准对象名称（提高导入速度）';//'Use not standart object names (improve import speed)';
   //  53131 = 'Frame width';
   sFRDesignerFormSelObj ='选择对象';// 'Select object';
   sFRDesignerFormInsRect = '插入矩形';//'Insert rectangle object';

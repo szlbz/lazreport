@@ -1,6 +1,6 @@
 object frAboutForm: TfrAboutForm
   Left = 228
-  Height = 261
+  Height = 374
   Top = 135
   Width = 428
   HorzScrollBar.Page = 278
@@ -8,32 +8,31 @@ object frAboutForm: TfrAboutForm
   ActiveControl = ButtonPanel1
   BorderStyle = bsDialog
   Caption = 'About'
-  ClientHeight = 261
+  ClientHeight = 374
   ClientWidth = 428
   DesignTimePPI = 144
   Font.Color = clBlack
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '3.0.0.3'
   object Bevel2: TBevel
     Left = 0
-    Height = 126
+    Height = 313
     Top = 0
-    Width = 285
+    Width = 428
     Align = alClient
     Shape = bsFrame
   end
   object Bevel1: TBevel
     Left = 24
     Height = 86
-    Top = 24
+    Top = 14
     Width = 86
     Shape = bsFrame
   end
   object Image1: TImage
     Left = 30
     Height = 50
-    Top = 30
+    Top = 20
     Width = 50
     AutoSize = True
     Picture.Data = {
@@ -89,9 +88,9 @@ object frAboutForm: TfrAboutForm
   end
   object Label1: TLabel
     Left = 144
-    Height = 16
-    Top = 24
-    Width = 72
+    Height = 27
+    Top = 14
+    Width = 111
     Alignment = taCenter
     Caption = 'FreeReport'
     Font.Color = clBlack
@@ -101,10 +100,10 @@ object frAboutForm: TfrAboutForm
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 156
-    Height = 14
-    Top = 48
-    Width = 60
+    Left = 146
+    Height = 24
+    Top = 41
+    Width = 106
     Alignment = taCenter
     Caption = 'Version 2.32'
     Font.Color = clBlack
@@ -113,9 +112,9 @@ object frAboutForm: TfrAboutForm
   end
   object Label3: TLabel
     Left = 132
-    Height = 14
-    Top = 96
-    Width = 116
+    Height = 24
+    Top = 86
+    Width = 222
     Alignment = taCenter
     Caption = 'Copyright (©) 1998-2002'
     Font.Color = clBlack
@@ -124,9 +123,9 @@ object frAboutForm: TfrAboutForm
   end
   object Label4: TLabel
     Left = 132
-    Height = 14
-    Top = 72
-    Width = 85
+    Height = 24
+    Top = 63
+    Width = 153
     Alignment = taCenter
     Caption = 'by Tzyganenko A.'
     Font.Color = clBlack
@@ -134,10 +133,10 @@ object frAboutForm: TfrAboutForm
     ParentFont = False
   end
   object ButtonPanel1: TButtonPanel
-    Left = 6
-    Height = 36
-    Top = 132
-    Width = 273
+    Left = 9
+    Height = 43
+    Top = 322
+    Width = 410
     BorderSpacing.Around = 9
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
@@ -151,5 +150,21 @@ object frAboutForm: TfrAboutForm
     CancelButton.Enabled = False
     TabOrder = 0
     ShowButtons = [pbClose, pbHelp]
+  end
+  object Label5: TLabel
+    Left = 9
+    Height = 180
+    Top = 124
+    Width = 407
+    AutoSize = False
+    Caption = '秋风(QQ:315795176)修改版：'#13#10'1、增加表格拆分合并和可以用word的方式调整表格大小'#13#10'2、根据记录和每页行数自动加空行'#13#10'3、可以定义文字上下标'#13#10'4、修正linux打印问题'#13#10'5、还修正及添加大量的功能。'
+    Color = clRed
+    Font.CharSet = GB2312_CHARSET
+    Font.Color = clRed
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+    WordWrap = True
   end
 end
