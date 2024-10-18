@@ -236,6 +236,11 @@ var
   S1, S2, S3, S: String;
 
 begin
+  if AFontName='仿宋' Then AFontName:='FangSong';
+  if AFontName='楷体' Then AFontName:='KaiTi';
+  if AFontName='幼圆' Then AFontName:='YouYuan';
+  if AFontName='黑体' Then AFontName:='SimHei';
+  if AFontName='宋体' Then AFontName:='STSong';
   Result:=FindItem(AFontName, AFontStyle);
   if Assigned(Result) then exit;
 
@@ -347,17 +352,17 @@ procedure TlrPdfExportFilter.SetupFonts;
 //Find default font name
 function DefFontName:string;
 const
-  DefFontNames : array [1..4] of string =
+  DefFontNames : array [1..8] of string =
   // TODO: Check if Arial is better default choice in windows/linux/mac
   {$IFDEF MSWINDOWS}
-     ('Arial', 'Liberation Sans', 'FreeSans', 'DejaVu Sans');
+     ('STSong','FangSong','KaiTi','SimHei','Arial', 'Liberation Sans', 'FreeSans', 'DejaVu Sans');
   {$ELSE}
-     ('Liberation Sans', 'Arial', 'FreeSans', 'DejaVu Sans');
+     ('STSong','FangSong','KaiTi','SimHei','Liberation Sans', 'Arial', 'FreeSans', 'DejaVu Sans');
   {$ENDIF}
 var
   i: Integer;
 begin
-  for i:=1 to 4 do
+  for i:=1 to 8 do
     if Assigned(gTTFontCache.Find(DefFontNames[i], false, false)) then
     begin
       Result:=DefFontNames[i];
@@ -392,6 +397,7 @@ begin
   gTTFontCache.SearchPath.Add('/usr/share/fonts/');
   gTTFontCache.SearchPath.Add('/usr/share/wine/fonts/');
   gTTFontCache.SearchPath.Add('/usr/local/lib/X11/fonts/');
+  gTTFontCache.SearchPath.Add(ExpandFileName('~/')+'.local/share/fonts');//linuxs要添加这行
   gTTFontCache.SearchPath.Add(GetUserDir + '.fonts/');
   {$ENDIF}
 
