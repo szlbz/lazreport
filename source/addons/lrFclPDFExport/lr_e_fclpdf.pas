@@ -417,7 +417,11 @@ end;
 
 procedure TlrPdfExportFilter.DoMemoView(View: TfrMemoView);
 var
-  S: String;
+  S,text: String;
+  W: Double;
+  x,y,r:single;
+  i:Integer;
+  ADescender: single;
 begin
   DrawRectView(View);
 
@@ -432,6 +436,31 @@ begin
     FCurFont.FontSize:=View.Font.Size;
     FCurFont.FontColor:=View.Font.Color;
     FCurFont.Activate;
+  end;
+
+  if (View is TfrMemoView) and Assigned(FCurFont) then
+  begin
+    x:=View.x;
+    y:=View.y;
+    for i:=0 to TfrMemoView(View).Memo.Count-1 do
+    begin
+      text:=UTF8ToSys (TfrMemoView(View).Memo[i]);
+      //text:=LConvEncoding.UTF8ToCP936(TfrMemoView(View).Memo.Text,False);
+      if TfrMemoView(View).FirstLine then
+        W:=TfrMemoView(View).Width - TfrMemoView(View).ParagraphGap - InternalGapX * 2
+      else
+        W:=TfrMemoView(View).Width - InternalGapX * 2;
+
+      //if TfrMemoView(View).Justify and not TfrMemoView(View).LastLine then
+      //  WriteTextRectJustify(FCurFont, X + InternalGapX, Y, W, View.dy,AnsitoUTF8( Text), true)
+      //else
+      //  WriteTextRect(FCurFont, X + InternalGapX, Y, W, AnsitoUTF8(Text), TfrMemoView(View).Alignment);
+      if TfrMemoView(View).Justify and not TfrMemoView(View).LastLine then
+        WriteTextRectJustify(FCurFont, X + InternalGapX, Y, W, View.dy,( Text), true)
+      else
+        WriteTextRect(FCurFont, X + InternalGapX, Y, W, (Text), TfrMemoView(View).Alignment,TfrMemoView(View).Angle);
+      y:=y+ abs(FCurFont.FontSize)+TfrMemoView(View).LineSpacing ;
+    end;
   end;
 end;
 
