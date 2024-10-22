@@ -234,12 +234,11 @@ function TExportFonts.AddItem(AFontName: string; AFontStyle: TFontStyles
   ): TExportFontItem;
 var
   S1, S2, S3, S: String;
-
 begin
-  if AFontName='仿宋' Then AFontName:='FangSong';
-  if AFontName='楷体' Then AFontName:='KaiTi';
-  if AFontName='幼圆' Then AFontName:='YouYuan';
-  if AFontName='黑体' Then AFontName:='SimHei';
+  if AFontName='仿宋' Then AFontName:='FangSong' else
+  if AFontName='楷体' Then AFontName:='KaiTi' else
+  if AFontName='幼圆' Then AFontName:='YouYuan' else
+  if AFontName='黑体' Then AFontName:='SimHei' else
   if AFontName='宋体' Then AFontName:='STSong';
   Result:=FindItem(AFontName, AFontStyle);
   if Assigned(Result) then exit;
@@ -397,7 +396,6 @@ begin
   gTTFontCache.SearchPath.Add('/usr/share/fonts/');
   gTTFontCache.SearchPath.Add('/usr/share/wine/fonts/');
   gTTFontCache.SearchPath.Add('/usr/local/lib/X11/fonts/');
-  gTTFontCache.SearchPath.Add(ExpandFileName('~/')+'.local/share/fonts');//linuxs要添加这行
   gTTFontCache.SearchPath.Add(GetUserDir + '.fonts/');
   {$ENDIF}
 
@@ -410,6 +408,7 @@ begin
     CreateFontDirList;
     {$ELSE}
     gTTFontCache.ReadStandardFonts;
+    gTTFontCache.SearchPath.Add(GetUserDir+'.local/share/fonts');//linuxs要添加这行
     {$ENDIF}
     gTTFontCache.BuildFontCache;
   end;
@@ -417,11 +416,19 @@ end;
 
 procedure TlrPdfExportFilter.DoMemoView(View: TfrMemoView);
 var
-  S,text: String;
-  W: Double;
-  x,y,r:single;
-  i:Integer;
-  ADescender: single;
+  ss,ss1,S,text: String;
+  W,w1,vw: Double;
+  x,y,r,hg,tw:single;
+  i,j,hs,pgap:Integer;
+  ms:TStringList;
+  fl:boolean;
+
+  function GetTextWidth(str:string):integer;
+  begin
+    FCurFont.FontSize:=View.Font.Size;
+    Result:=ROUND(ConvetUnits1(FCurFont.TextWidth(str)));
+  end;
+
 begin
   DrawRectView(View);
 
@@ -440,28 +447,88 @@ begin
 
   if (View is TfrMemoView) and Assigned(FCurFont) then
   begin
-    x:=View.x;
-    y:=View.y;
-    for i:=0 to TfrMemoView(View).Memo.Count-1 do
+    x:=View.Left;
+    y:=View.Top;
+
+    ms:=TStringList.Create;
+    if ((TfrMemoView(View).Flags and 2)<>0) and (TfrMemoView(View).Memo.Count<>0) then //flWordWrap=2   //自动换行
+    Begin
+      for j:=0 to TfrMemoView(View).Memo.Count-1 do
+      begin
+        //#02<sup></sup>  #03<sub></sub> #04取消上下标粗体斜体 #05粗体<b></b>  #06下划线<u></u>  #07斜体<i></i>
+        ss:=TfrMemoView(View).Memo[j];
+        ss:=Ss.Replace('<br>', '', [rfReplaceAll]);
+        ss:=Ss.Replace('<sup>', '', [rfReplaceAll]);
+        ss:=ss.Replace ('</sup>', '', [rfReplaceAll]);
+        ss:=ss.Replace ('<sub>', '', [rfReplaceAll]);
+        ss:=ss.Replace ('</sub>', '', [rfReplaceAll]);
+        ss:=ss.Replace ('<b>', '', [rfReplaceAll]);
+        ss:=ss.Replace ('</b>', '', [rfReplaceAll]);
+        ss:=ss.Replace ('<u>', '', [rfReplaceAll]);
+        ss:=ss.Replace ('</u>', '', [rfReplaceAll]);
+        ss:=ss.Replace ('<i>', '', [rfReplaceAll]);
+        ss:=ss.Replace ('</i>', '', [rfReplaceAll]);
+        i:=1;
+        ss1:='';
+        tw:=GetTextWidth(ss);
+        vw:=View.Width;
+        fl:=true;
+        if tw>vw then
+        begin
+          while i<=UTF8Length(ss) do
+          begin
+            if fl then pgap:= round(GetTextWidth('国')*TfrMemoView(View).ParagraphGap)
+            else pgap:=0;
+            if GetTextWidth(ss1+Utf8Copy(ss,i+1,1))+pgap<View.Width-View.GapX*2-View.FrameWidth then
+            Begin
+              ss1:=ss1+Utf8Copy(ss,i,1);
+            end
+            else
+            begin
+              ms.Add(ss1);
+              ss1:=Utf8Copy(ss,i,1);
+            end;
+            inc(i);
+          end;
+          if ss1<>'' then ms.Add(ss1);
+        end
+        else
+         ms.Add(ss);
+        fl:=false;
+      end;
+    end
+    else
+      ms.Assign(TfrMemoView(View).Memo);
+
+    hs:=ms.Count;;//行数
+    hg:= ConvetUnits1(FCurFont.TextHeight(ms[0]));
+
+    if View.Layout=tlTop then  //文字垂直对齐--顶
+      y := y + View.gapy;
+    if View.Layout=tlCenter then //文字垂直对齐--中
+      y := y + View.dy/2-((hg+TfrMemoView(View).LineSpacing)*hs)/2;
+    if View.Layout=tlBottom then  //文字垂直对齐--底
+      y := y + View.dy - View.gapy - 5 - (hg+TfrMemoView(View).LineSpacing)*hs;
+
+    fl:=true;
+    for i:=0 to ms.Count-1 do
     begin
-      text:=UTF8ToSys (TfrMemoView(View).Memo[i]);
-      //text:=LConvEncoding.UTF8ToCP936(TfrMemoView(View).Memo.Text,False);
+      if fl then pgap:= round(GetTextWidth('国')*TfrMemoView(View).ParagraphGap)
+      else pgap:=0;
+      text:=ms[i];
       if TfrMemoView(View).FirstLine then
         W:=TfrMemoView(View).Width - TfrMemoView(View).ParagraphGap - InternalGapX * 2
       else
         W:=TfrMemoView(View).Width - InternalGapX * 2;
-
-      //if TfrMemoView(View).Justify and not TfrMemoView(View).LastLine then
-      //  WriteTextRectJustify(FCurFont, X + InternalGapX, Y, W, View.dy,AnsitoUTF8( Text), true)
-      //else
-      //  WriteTextRect(FCurFont, X + InternalGapX, Y, W, AnsitoUTF8(Text), TfrMemoView(View).Alignment);
       if TfrMemoView(View).Justify and not TfrMemoView(View).LastLine then
-        WriteTextRectJustify(FCurFont, X + InternalGapX, Y, W, View.dy,( Text), true)
+        WriteTextRectJustify(FCurFont, X +pgap+ InternalGapX, Y, W, View.dy,( Text), true)
       else
-        WriteTextRect(FCurFont, X + InternalGapX, Y, W, (Text), TfrMemoView(View).Alignment,TfrMemoView(View).Angle);
-      y:=y+ abs(FCurFont.FontSize)+TfrMemoView(View).LineSpacing ;
-    end;
+        WriteTextRect(FCurFont, X +pgap+ InternalGapX, Y, W, (Text), TfrMemoView(View).Alignment,TfrMemoView(View).Angle);
+      y:=y+ ConvetUnits1(FCurFont.TextHeight(Text))+TfrMemoView(View).LineSpacing ;
+      fl:=false;
+   end;
   end;
+
 end;
 
 procedure TlrPdfExportFilter.DoImageView(View: TfrPictureView);
